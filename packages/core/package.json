@@ -6,10 +6,13 @@
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "scripts": {
-    "typecheck": "tsc --noEmit -p .",
-    "test": "vitest run --passWithNoTests"
+    "typecheck": "tsc --noEmit -p . && tsc --noEmit -p tsconfig.scripts.json",
+    "test": "vitest run --passWithNoTests",
+    "report": "tsx scripts/reference-report.ts"
   },
   "devDependencies": {
+    "@types/node": "^22.20.4",
+    "tsx": "^4.23.15",
     "typescript": "^5.9.0",
     "vitest": "^3.2.0"
   }

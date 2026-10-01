@@ -1,13 +1,14 @@
 # Sauna Configurator MVP
 
 B2B white-label 3D konfigurátor modulárních saun (custom ocelový rám, ISO 20′ HC).
-Zdroj pravdy je konfigurační JSON. Validace, BOM, hmotnost, těžiště, cena i 3D scéna se z něj generují deterministicky přes `@sauna/core`.
+Zdroj pravdy je konfigurační JSON. Validace, BOM, hmotnost, těžiště, reakce, doprava, cena i 3D scéna se z něj generují
+deterministicky přes `@sauna/core`. Stejný kód běží na klientu i na serveru.
 
 ## Stav
 
 | Milník | Stav |
 |---|---|
-| M1 – Core | **návrh typů ke schválení** – viz [docs/M1-PROPOSAL.md](docs/M1-PROPOSAL.md) |
+| M1 – Core | **hotovo** – viz [docs/M1-PROPOSAL.md](docs/M1-PROPOSAL.md), reporty [docs/reference/](docs/reference/) |
 | M2 – Viewer | – |
 | M3 – Configurator + embed | – |
 | M4 – API + výstupy | – |
@@ -20,6 +21,15 @@ Zdroj pravdy je konfigurační JSON. Validace, BOM, hmotnost, těžiště, cena 
 pnpm install
 pnpm typecheck
 pnpm test
+pnpm --filter @sauna/core report   # docs/reference/ref-*.md pro ruční ověření
+```
+
+## Použití core
+
+```ts
+import { evaluate } from '@sauna/core';
+const e = evaluate(config, catalog);
+e.bomRows; e.mass; e.lift; e.supports; e.transport; e.sauna; e.price; e.violations; e.scene;
 ```
 
 Rozhodnutí: [docs/DECISIONS.md](docs/DECISIONS.md)
