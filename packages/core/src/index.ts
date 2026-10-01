@@ -10,3 +10,5 @@ export * from './model/rules.js';
 export * from './model/results.js';
 export * from './model/productLine.js';
 export * from './model/api.js';
+export { evaluate } from './evaluate.js';
+export { createCatalogIndex } from './catalog/index.js';

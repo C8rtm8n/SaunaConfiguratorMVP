@@ -1,3 +1,4 @@
+import type { ComponentInstance } from './component.js';
 import type { I18nTemplate, I18nText } from './i18n.js';
 import type { Id } from './units.js';
 
@@ -5,7 +6,7 @@ import type { Id } from './units.js';
  * Rules are data (stored in the catalog, editable per tenant later).
  * Simple rules are pure expressions over `Facts`; geometric checks
  * (collision envelopes, door swing…) call a named, pure check function
- * from the product-line registry with data parameters (D-009).
+ * from the registry with data parameters (D-009).
  */
 
 export type RuleLevel = 'error' | 'warning' | 'auto';
@@ -14,7 +15,10 @@ export type RuleLevel = 'error' | 'warning' | 'auto';
 export type FactValue = number | string | boolean | null;
 export type Facts = Readonly<Record<string, FactValue>>;
 
-/** Reference to a fact or to a catalog limit: { fact: 'sauna.eqVolume_m3' } | { limit: 'doorMinClearWidth_mm' }. */
+/**
+ * Operand: a fact, a catalog limit (dotted path into `Limits`; `{value}` wrappers
+ * are unwrapped, e.g. 'doorMinClearWidth_mm' or 'topBenchToCeiling_mm.min'), or a literal.
+ */
 export type Operand = { fact: string } | { limit: string } | { value: FactValue };
 
 export type Condition =
@@ -25,21 +29,17 @@ export type Condition =
   | { op: 'in'; a: Operand; values: FactValue[] }
   | { op: 'between'; a: Operand; min: Operand; max: Operand };
 
-/** Name of a registered check function, e.g. 'heaterClearance', 'doorSwing'. */
+/** Name of a registered check / auto / fix function, e.g. 'heaterClearance'. */
 export type CheckFnId = string;
 
 export type RuleCheck =
-  /** Violated when `assert` is false. */
+  /** Violated when `assert` is false. Params = values of all operands. */
   | { kind: 'expr'; assert: Condition }
   /** Registered pure function; returns 0..n findings. */
   | { kind: 'fn'; fn: CheckFnId; params?: Record<string, FactValue> };
 
-/** What an 'auto' rule adds to the resolved config. */
-export type AutoActionDef =
-  | { kind: 'fn'; fn: CheckFnId; params?: Record<string, FactValue> };
-
 export interface RuleDef {
-  /** 'R01'…'R10' for MVP; stable, referenced from tests and UI. */
+  /** 'R01'…'R10' from the brief, 'S..' shell validity, 'M..' mass, 'T..' transport. */
   id: string;
   level: RuleLevel;
   title: I18nText;
@@ -47,10 +47,12 @@ export interface RuleDef {
   when?: Condition;
   /** For 'error' / 'warning'. */
   check?: RuleCheck;
-  /** For 'auto'. */
-  action?: AutoActionDef;
+  /** For 'auto': registered function producing AutoAdditions. */
+  action?: { fn: CheckFnId; params?: Record<string, FactValue> };
   message_i18n: I18nTemplate;
-  /** Fix strategy name; the check fn computes the concrete patch. */
+  /** Variant messages selected by `Finding.variant`. */
+  messages?: Record<string, I18nTemplate>;
+  /** Fix strategy; the fn computes the concrete patch (null = no fix possible). */
   fix?: { fn: CheckFnId; label_i18n: I18nText };
   source?: string;
 }
@@ -59,6 +61,15 @@ export interface RuleDef {
 export type ConfigPatchOp =
   | { op: 'replace' | 'add'; path: string; value: unknown }
   | { op: 'remove'; path: string };
+
+/** Raw result of a check function; the engine adds level and message. */
+export interface Finding {
+  variant?: string;
+  params: Record<string, FactValue>;
+  affectedIds: Id[];
+  /** Concrete fix computed by the check itself (takes precedence over `rule.fix`). */
+  patch?: ConfigPatchOp[];
+}
 
 export interface Violation {
   ruleId: string;
@@ -71,11 +82,10 @@ export interface Violation {
   suggestedFix?: { label: I18nText; patch: ConfigPatchOp[] };
 }
 
-/** Result of an 'auto' rule: extra components / roof slot / BOM, never a config mutation. */
+/** Result of an 'auto' rule: extra components, never a config mutation (D-003). */
 export interface AutoAddition {
   ruleId: string;
-  /** Component instances appended to the build. */
-  components: import('./component.js').ComponentInstance[];
+  components: ComponentInstance[];
   /** Human-readable note for the summary and tech PDF. */
   note: I18nTemplate;
   params: Record<string, FactValue>;

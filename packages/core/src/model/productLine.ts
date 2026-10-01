@@ -1,12 +1,13 @@
-import type { CatalogIndex } from './catalog.js';
 import type { BuildContext, ComponentBuilder, ComponentInstance } from './component.js';
 import type { Config, ProductLineId } from './config.js';
-import type { AutoAddition, CheckFnId, ConfigPatchOp, Facts, Violation } from './rules.js';
+import type { AutoAddition, CheckFnId, ConfigPatchOp, Facts, Finding } from './rules.js';
+
+export type FnParams = Readonly<Record<string, string | number | boolean | null>>;
 
 /** Signature of registered check / auto / fix functions. Pure. */
-export type CheckFn = (ctx: BuildContext, facts: Facts, params: Record<string, unknown>) => Violation[];
-export type AutoFn = (ctx: BuildContext, facts: Facts, params: Record<string, unknown>) => AutoAddition | null;
-export type FixFn = (ctx: BuildContext, facts: Facts) => ConfigPatchOp[];
+export type CheckFn = (ctx: BuildContext, facts: Facts, params: FnParams) => Finding[];
+export type AutoFn = (ctx: BuildContext, facts: Facts, params: FnParams) => Omit<AutoAddition, 'ruleId'>[];
+export type FixFn = (ctx: BuildContext, facts: Facts) => ConfigPatchOp[] | null;
 
 /**
  * Interior package over the shared shell. MVP: only 'sauna'.
@@ -14,15 +15,13 @@ export type FixFn = (ctx: BuildContext, facts: Facts) => ConfigPatchOp[];
  */
 export interface ProductLinePack<C extends Config = Config> {
   id: ProductLineId;
-  zoneTypes: readonly C['zones'][number]['type'][];
-  /** Components of the interior (the shell is built by core). */
+  zoneTypes: readonly string[];
+  /** Interior components (the shell is built by core). */
   components(config: C, ctx: BuildContext): ComponentInstance[];
-  builders: Record<string, ComponentBuilder<any>>;
-  /** Pack-specific facts merged with shell facts. */
+  builders: Record<string, ComponentBuilder>;
+  /** Pack facts available before the build (geometry-only); used by auto rules. */
   facts(config: C, ctx: BuildContext): Facts;
   checks: Record<CheckFnId, CheckFn>;
   autos: Record<CheckFnId, AutoFn>;
   fixes: Record<CheckFnId, FixFn>;
-  /** Starting config for the wizard. */
-  defaultConfig(catalog: CatalogIndex, tenantId: string): C;
 }

@@ -41,7 +41,7 @@ export interface BomLine {
   unit: BomUnit;
   /** Cut length per piece for linear members. */
   len_mm?: Mm;
-  /** Total net mass of the line (not per piece). Waste is not shipped. */
+  /** Total net mass of the line (not per piece). Waste is not shipped. Negative = removed material (ISO cut-out). */
   mass_kg: Kg;
   /** COG of the line in module coordinates. */
   cog_mm: Vec3;
@@ -49,6 +49,9 @@ export interface BomLine {
   surface_m2?: number;
   /** Cost incl. waste, material + labour, Kč bez DPH. */
   cost: Czk;
+  /** Split of `cost` into material and labour (for the price breakdown). */
+  materialCost: Czk;
+  labourCost: Czk;
   /** Sell price = cost × (1 + category margin). */
   price: Czk;
   waste_pct: Ratio;

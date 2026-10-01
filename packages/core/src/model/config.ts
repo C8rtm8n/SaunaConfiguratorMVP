@@ -70,7 +70,7 @@ export interface Opening {
 export interface Zone<T extends string = SaunaZoneType> {
   id: Id;
   type: T;
-  /** Start in module X [mm]. First zone starts at 0. */
+  /** Start in module X [mm]. First zone starts at 0, last ends at module.L_mm. */
   from_mm: Mm;
   /** End in module X [mm]. Interior boundaries = partition axes, snapped to grid. */
   to_mm: Mm;
@@ -160,7 +160,10 @@ export interface HeaterPlacement {
   sku: SkuRef;
   /** Wall the heater stands against (inside the sauna zone). */
   wall: WallId;
-  /** Heater axis measured along the wall from its start [mm] (D-006). */
+  /**
+   * Heater axis position along the wall, as a module coordinate [mm] (D-006):
+   * x for N/S walls, y for E/W walls and partitions.
+   */
   along_mm: Mm;
 }
 
@@ -171,9 +174,11 @@ export interface BenchConfig {
   levels: 2 | 3;
   /** Main bench wall. */
   wall: WallId;
-  /** Return wall for the L layout (must be adjacent to `wall`). */
+  /** Return wall for the L layout (must be perpendicular to `wall`). */
   returnWall?: WallId;
-  /** Bench extent along the main wall, from wall start [mm]; omitted = full zone. */
+  /** Length of the L return leg, measured from the front of the main bench [mm]. */
+  returnLength_mm?: Mm;
+  /** Bench extent along the main wall as module coordinates [mm]; omitted = full room. */
   from_mm?: Mm;
   to_mm?: Mm;
 }
