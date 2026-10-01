@@ -1,0 +1,124 @@
+{
+  "refs": {
+    "ref-1": {
+      "readyMs": 1301,
+      "drawCalls": 105,
+      "triangles": 4256,
+      "geometries": 34,
+      "textures": 6,
+      "dpr": 1,
+      "shadows": true,
+      "fps": 0
+    },
+    "ref-2": {
+      "readyMs": 1187,
+      "drawCalls": 135,
+      "triangles": 5168,
+      "geometries": 40,
+      "textures": 6,
+      "dpr": 1,
+      "shadows": true,
+      "fps": 0
+    },
+    "ref-3": {
+      "readyMs": 2354,
+      "drawCalls": 149,
+      "triangles": 3120,
+      "geometries": 49,
+      "textures": 6,
+      "dpr": 1,
+      "shadows": true,
+      "fps": 0
+    }
+  },
+  "checks": [
+    {
+      "name": "ref-1 renders without console errors",
+      "ok": true,
+      "detail": "105 draw calls, 4256 triangles"
+    },
+    {
+      "name": "ref-2 renders without console errors",
+      "ok": true,
+      "detail": "135 draw calls, 5168 triangles"
+    },
+    {
+      "name": "ref-3 renders without console errors",
+      "ok": true,
+      "detail": "149 draw calls, 3120 triangles"
+    },
+    {
+      "name": "section mode hides roof, keeps back wall",
+      "ok": true,
+      "detail": "{\"roof\":[12,12],\"back\":[0,13]}"
+    },
+    {
+      "name": "mouse click on a slot emits slotclick",
+      "ok": true,
+      "detail": "[{\"wall\":\"S\",\"index\":1}]"
+    },
+    {
+      "name": "moving the heater rebuilds only heater, chimney, ventilation",
+      "ok": true,
+      "detail": "kept 14"
+    },
+    {
+      "name": "exportSnapshots → 4 PNG 1600×1000",
+      "ok": true,
+      "detail": "iso_front 1600×1000, iso_back 1600×1000, front 1600×1000, section 1600×1000"
+    },
+    {
+      "name": "mobile 4G (9 Mbit/s, 170 ms): interactive in 2661 ms",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile slow 4G (1.6 Mbit/s, 150 ms): interactive in 3569 ms",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "mobile": {
+    "4G (9 Mbit/s, 170 ms)": {
+      "readyMs": 2661,
+      "marks": {
+        "responseEnd": 178,
+        "domContentLoaded": 2315,
+        "script-start": 685,
+        "sauna:renderer": 798,
+        "viewer-created": 846,
+        "evaluated": 1002,
+        "synced": 1152,
+        "first-render": 2310
+      },
+      "drawCalls": 132,
+      "triangles": 5132,
+      "geometries": 40,
+      "textures": 5,
+      "dpr": 1.5,
+      "shadows": true,
+      "fps": 0
+    },
+    "slow 4G (1.6 Mbit/s, 150 ms)": {
+      "readyMs": 3569,
+      "marks": {
+        "responseEnd": 161,
+        "domContentLoaded": 3184,
+        "script-start": 1913,
+        "sauna:renderer": 1997,
+        "viewer-created": 2024,
+        "evaluated": 2085,
+        "synced": 2141,
+        "first-render": 3183
+      },
+      "drawCalls": 132,
+      "triangles": 5132,
+      "geometries": 40,
+      "textures": 5,
+      "dpr": 1.5,
+      "shadows": true,
+      "fps": 0
+    }
+  },
+  "initialLoadBytes": 761866
+}

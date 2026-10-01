@@ -92,3 +92,28 @@ Každé číslo z oboru je v katalogu (`Limits`, `Rates`, položky) se zdrojem. 
 - **D-027 – Úpravy fixtures.** REF-2 má elektrická kamna 18 kW. Kamna na dřevo s placeholder odstupy (500/500/300) se do sauny
   3,3 × 1,85 m s trojúrovňovou lavicí a dveřmi v příčce nevejdou bez kolize, zadání pro REF-2 typ kamen nepředepisuje.
   Dveře 700 mm zabírají 2 sloty rastru 600. Stav: přijato.
+
+## Viewer (M2)
+
+- **D-028 – Průřez prutů ∥Y.** Lokální osy průřezu pro prut ∥Y jsou (−X, Z), ne (X, Z). Báze je pak pravotočivá pro všechny směry
+  a pruty jdou instancovat (`InstancedMesh` nepodporuje zrcadlení po instancích). Asymetrické průřezy (U, L) ∥Y jsou otočené o 180°
+  kolem osy prutu, BOM ani hmotnost to neovlivní. Stav: přijato.
+- **D-029 – Lamely jako textura spár.** Plášť zůstává panel na slot (kvůli výběru slotu a otvorům). Lamely se kreslí texturou spár
+  s roztečí podle krycí šířky prkna z katalogu (`PanelNode.grain`) a orientací podle `cladding.orientation`. Instancují se prkna lavic,
+  pruty rámu a boxy. *Geometrie lamel s výřezy otvorů by znamenala tisíce trojúhelníků navíc bez přínosu.* Stav: přijato.
+- **D-030 – Diff scény.** Viewer porovnává komponenty v kořeni scény podle `id` + `hash` (hash obsahu podstromu z core).
+  Nezměněná komponenta si nechá Three.js objekty, změněná se zahodí a postaví znovu. Posun kamen přestaví jen `heater`, `chimney`
+  a `ventilation`. Stav: přijato.
+- **D-031 – Řez.** Skryje se střecha (`cutaway: 'roof'`, včetně podhledu) a vnější stěna nejblíže kameře (`wall:X`, plášť, obklad,
+  stěna kontejneru). Stěna se vybírá podle polohy kamery vůči středu modulu, normalizované polovičními rozměry, takže řez při
+  orbitování sleduje kameru. Nosný rám zůstává vidět. Stav: přijato.
+- **D-032 – Výkon.** Render jen na vyžádání (změna kamery, scény, hover), žádná trvalá smyčka. Výchozí kvalita podle třídy zařízení
+  (jádra, `deviceMemory`, `pointer: coarse`). Při interakci se z klouzavého mediánu snímků snižuje DPR po 0,25 a nakonec se vypnou
+  stíny. Cíl je 60 fps na desktopu a 30 fps na dotykových zařízeních. Bez post-processingu. Loadery GLB/Draco/Meshopt/KTX2 a HDR se
+  načítají dynamickým importem, až když jsou potřeba. Stav: přijato.
+- **D-033 – Prostředí až po prvním snímku.** PMREM (procedurální `RoomEnvironment`, nebo 1k HDR přes `environmentUrl`) se generuje
+  v `requestIdleCallback` po prvním renderu, do té doby svítí hemisférické světlo. V emulaci mobilu to zkrátilo čas do interakce
+  z 8,3 s na 2,7 s. Stav: přijato.
+- **D-034 – Snímky pro PDF.** `exportSnapshots()` vyrenderuje 4 pohledy (iso zepředu, iso zezadu, čelní pohled na S stěnu,
+  iso v řezu) 1 600 × 1 000 na hlavním canvasu v jednom tasku (bez blikání, bez `preserveDrawingBuffer`) a vrací PNG data URL.
+  Upload na server je v M4. Stav: přijato.
