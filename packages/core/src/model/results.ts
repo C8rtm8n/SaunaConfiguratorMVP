@@ -3,7 +3,7 @@ import type { ModuleGeometry, Penetration } from './component.js';
 import type { PriceDisplayMode } from './catalog.js';
 import type { Config } from './config.js';
 import type { AutoAddition, Facts, Violation } from './rules.js';
-import type { SceneNode } from './scene.js';
+import type { GroupNode } from './scene.js';
 import type { SlotMap } from './slots.js';
 import type { Czk, Kg, Kn, Kw, M3, Mm, Ratio, SkuRef, Vec3 } from './units.js';
 
@@ -96,7 +96,7 @@ export interface Evaluation {
   geometry: ModuleGeometry;
   auto: AutoAddition[];
   slots: SlotMap;
-  scene: SceneNode;
+  scene: GroupNode;
   bom: BomLine[];
   bomRows: BomRow[];
   penetrations: Penetration[];

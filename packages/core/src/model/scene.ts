@@ -47,7 +47,8 @@ export interface Section2D {
 
 /**
  * Straight prismatic member, section extruded along an axis-parallel line from → to.
- * Local section axes: member ∥ X → (u, v) = (Y, Z); ∥ Y → (X, Z); ∥ Z → (X, Y).
+ * Local section axes (right-handed with the member axis, D-028):
+ * member ∥ X → (u, v) = (Y, Z); ∥ Y → (−X, Z); ∥ Z → (X, Y).
  */
 export interface ExtrudeNode extends NodeBase {
   type: 'extrude';
@@ -87,6 +88,11 @@ export interface PanelNode extends NodeBase {
   thickness_mm: Mm;
   /** Holes in local (u, v) relative to `min`. */
   holes?: Array<{ u: Mm; v: Mm; w: Mm; h: Mm }>;
+  /**
+   * Board joints of lamella cladding (D-029): joints repeat every `pitch_mm`
+   * along local axis `along` ('u' = vertical boards side by side, 'v' = horizontal boards).
+   */
+  grain?: { along: 'u' | 'v'; pitch_mm: Mm };
 }
 
 /** Reference to a GLB asset placed into an axis-aligned bounding box. */

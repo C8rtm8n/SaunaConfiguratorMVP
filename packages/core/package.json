@@ -15,5 +15,9 @@
     "tsx": "^4.23.15",
     "typescript": "^5.9.0",
     "vitest": "^3.2.0"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./fixtures": "./src/fixtures/index.ts"
   }
 }

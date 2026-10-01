@@ -56,6 +56,8 @@ export function buildWall(params: { wall: ExteriorWallId }, ctx: BuildContext): 
     ...lay.slots.map((s) => ({ a: s.from_mm, b: s.to_mm, key: `slot-${s.index}`, slot: s.index })),
   ];
   const tClad = clad.thickness_mm;
+  // Cladding ends under the roof covering (no coplanar faces at the eaves).
+  const cladTop = env.max[2] - ctx.catalog.get('panel', ctx.config.cladding.roof).thickness_mm;
   const plane = ax === 0 ? 'xz' : 'yz';
   const holesIn = (a: Mm, b: Mm, zBase: Mm) =>
     openings
@@ -70,11 +72,12 @@ export function buildWall(params: { wall: ExteriorWallId }, ctx: BuildContext): 
     min[ax] = s.a;
     min[nAx] = inward > 0 ? outer : outer - tClad;
     const n: PanelNode = {
-      type: 'panel', id: `${id}/clad/${s.key}`, plane, min, width_mm: s.b - s.a, height_mm: env.max[2] - env.min[2], thickness_mm: tClad,
+      type: 'panel', id: `${id}/clad/${s.key}`, plane, min, width_mm: s.b - s.a, height_mm: cladTop - env.min[2], thickness_mm: tClad,
       material: clad.appearance, tags: { cutaway: `wall:${wall}`, castShadow: true },
     };
     const holes = holesIn(s.a, s.b, env.min[2]);
     if (holes.length) n.holes = holes;
+    if (clad.board) n.grain = { along: ctx.config.cladding.orientation === 'vertical' ? 'u' : 'v', pitch_mm: clad.board.coverWidth_mm };
     if (s.slot !== undefined) n.tags = { ...n.tags, slot: { wall, index: s.slot } };
     nodes.push(n);
   }
@@ -91,6 +94,7 @@ export function buildWall(params: { wall: ExteriorWallId }, ctx: BuildContext): 
   };
   const lh = holesIn(inner.min[ax], inner.max[ax], inner.min[2]);
   if (lh.length) lining.holes = lh;
+  if (intPanel.board) lining.grain = { along: 'v', pitch_mm: intPanel.board.coverWidth_mm };
   nodes.push(lining);
   return { geometry: group(id, nodes), bom, penetrations: [] };
 }
