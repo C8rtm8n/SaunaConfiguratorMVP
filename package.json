@@ -8,7 +8,8 @@
   "scripts": {
     "typecheck": "pnpm -r typecheck",
     "test": "pnpm -r test",
-    "report": "pnpm --filter @sauna/core report"
+    "report": "pnpm --filter @sauna/core report",
+    "e2e": "pnpm --filter @sauna/viewer build:demo && pnpm --filter @sauna/viewer e2e"
   },
   "devDependencies": {
     "typescript": "^5.9.0"

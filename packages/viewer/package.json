@@ -1,0 +1,26 @@
+{
+  "name": "@sauna/viewer",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit -p .",
+    "test": "vitest run",
+    "demo": "vite demo",
+    "build:demo": "vite build demo --outDir ../dist-demo --emptyOutDir",
+    "e2e": "node test/e2e.mjs"
+  },
+  "dependencies": {
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@sauna/core": "workspace:*",
+    "@types/three": "^0.186.0",
+    "playwright-core": "1.55.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.6",
+    "vitest": "^3.2.7"
+  }
+}
