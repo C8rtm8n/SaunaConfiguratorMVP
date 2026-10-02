@@ -18,3 +18,5 @@ export * from './edit/index.js';
 export { applyPatch } from './rules/patch.js';
 export { fillTemplate } from './report/markdown.js';
 export { planSvg, type PlanOptions } from './report/plan.js';
+export { validateCatalog, type CatalogIssue } from './catalog/validate.js';
+export { catalogToSheets, sheetsToCatalog, LIST_SHEETS, KV_SHEETS, type Sheet, type Cell } from './catalog/tabular.js';
