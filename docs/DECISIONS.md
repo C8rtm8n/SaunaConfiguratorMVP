@@ -173,3 +173,28 @@ Každé číslo z oboru je v katalogu (`Limits`, `Rates`, položky) se zdrojem. 
   úložiště řeší M6. Stav: přijato.
 - **D-048 – Skrytá cena.** Když tenant cenu nezobrazuje, veřejný katalog nemá žádné ceny (vše 0) a veřejné odpovědi API neobsahují
   `price.total`. Cenu vidí jen výrobce v e-mailu, exportech a souhrnu revize. Stav: přijato.
+
+## Administrace (M5)
+
+- **D-049 – Katalog = neměnné verze.** Každá úprava katalogu (položky, sazby, limity) vytvoří novou verzi `<slug>-<n>`, která se
+  stane aktivní. Uložené revize konfigurací se dál počítají se svou verzí. Před publikací proběhne `validateCatalog`: odkazy mezi
+  položkami (profil → ocel, skladba → panely a řezivo, rám → profily a skladby, kamna → komínová sestava…), rozsahy čísel
+  (objemy kamen, kladné hmotnosti, prořez 0–1, marže), jedinečná SKU a zkušební výpočet výchozí konfigurace pro custom i ISO
+  (zachytí i pravidla odkazující na neexistující funkci). Chyba publikaci zablokuje, zástupné hodnoty jsou jen upozornění.
+  Admin vždy nejdřív ukáže suchý běh (diff + problémy), teprve pak lze publikovat. Stav: přijato.
+- **D-050 – Katalog v XLSX.** Jeden list na seznam položek (Ocel, Profily, Řezivo, Plošné materiály, Okna a dveře, Kamna, Lavice,
+  Nakupované díly, Přídavky, Osazení, Kontejnery, Skladby, Rámy, Elektro tabulka, Pravidla), vnořená pole jako sloupce s tečkovou
+  cestou (`clearance.side_mm`, `name.de`, `slots.600`), pole jako JSON v buňce. Sazby, Limity a Moduly jsou listy klíč–hodnota.
+  Export → import je beze ztráty (test). List, který v importovaném souboru chybí, ponechá současné hodnoty. Import má náhled
+  (diff) a potvrzení. Stav: přijato.
+- **D-051 – Role.** `admin`: vše. `sales`: poptávky (čtení, změna stavu, exporty) a katalog, sazby i nastavení jen pro čtení.
+  API zápisy ověřuje samo (403), skrytí tlačítek v UI je jen pohodlí. Tenant se bere vždy ze session. Stav: přijato.
+- **D-052 – Nastavení tenanta.** Barvy (hex), zaoblení, písmo (bezpečné znaky; Google Fonts jen přes `fonts.googleapis.com`),
+  logo jako `data:image/...` do 250 kB nebo `https://`. Dále jazyky a měny s výchozími hodnotami, e-mail pro poptávky, webhook
+  URL, webhook secret (jen zápis, API ho nikdy nevrací) a povolené originy pro embed. Změny se v konfigurátoru projeví přes
+  `GET /tenants/:slug/public` (cache 60 s). Stav: přijato.
+- **D-053 – Seed.** `seedDemo` založí tenanta „Demo Sauny s.r.o.“ s demo katalogem (profily RHS 100×100×4, RHS 80×80×3,
+  RHS 60×40×3, U 120, L 50×5 se správnými kg/m; plášť thermowood 26×92, Yakisugi, trapéz; interiér osika, thermo-osika;
+  lavice abachi; 2 kamna na dřevo + 2 elektrická jako placeholder; okna 600×600, 900×600, panorama 2 400×1 200, prosklené čelo,
+  celoskleněné dveře 700×1 900) a uživatele `admin@demo-sauny.example`. Spouští se při startu API mimo produkci
+  (v produkci se `SEED_DEMO=1`) nebo přes `pnpm --filter @sauna/api seed`. Stav: přijato.

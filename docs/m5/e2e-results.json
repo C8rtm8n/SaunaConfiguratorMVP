@@ -1,0 +1,74 @@
+{
+  "results": [
+    {
+      "name": "magic link login lands in the admin",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "lead status can be changed",
+      "ok": true,
+      "detail": "negotiating"
+    },
+    {
+      "name": "lead detail: offer.pdf download (session cookie)",
+      "ok": true,
+      "detail": "http://localhost:38990/configs/cx3wgxc3afsk1pr/exports/offer.pdf?revision=1"
+    },
+    {
+      "name": "dry run shows the changed heater",
+      "ok": true,
+      "detail": "Změnyheaters: změněno HEATER-WOOD-AUpozornění (4)heaters[0].source: zástupné hod"
+    },
+    {
+      "name": "published price reaches the public catalog",
+      "ok": true,
+      "detail": "demo-2: 30000 Kč (prodejní)"
+    },
+    {
+      "name": "new window added in the admin is in the configurator catalog",
+      "ok": true,
+      "detail": "{\"600\":2,\"1200\":1}"
+    },
+    {
+      "name": "…and the API accepts it in a configuration",
+      "ok": true,
+      "detail": "c4odlntth7eawxv"
+    },
+    {
+      "name": "invalid catalog cannot be published",
+      "ok": true,
+      "detail": "Chyby (1) – nelze publikovat"
+    },
+    {
+      "name": "rates and price display published",
+      "ok": true,
+      "detail": "demo-4"
+    },
+    {
+      "name": "theming change reaches the public endpoint",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "XLSX import preview (round trip has no changes)",
+      "ok": true,
+      "detail": "Náhled importu: beze změn"
+    },
+    {
+      "name": "sales role sees the catalog read-only",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "…and the API refuses writes (403)",
+      "ok": true,
+      "detail": "403"
+    },
+    {
+      "name": "no page errors",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}

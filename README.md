@@ -12,7 +12,7 @@ deterministicky přes `@sauna/core`. Stejný kód běží na klientu i na server
 | M2 – Viewer | **hotovo** – viz [docs/M2.md](docs/M2.md), screenshoty [docs/m2/](docs/m2/) |
 | M3 – Configurator + embed | **hotovo** – viz [docs/M3.md](docs/M3.md), screenshoty [docs/m3/](docs/m3/) |
 | M4 – API + výstupy | **hotovo** – viz [docs/M4.md](docs/M4.md), ukázkové PDF/XLSX [docs/m4/](docs/m4/) |
-| M5 – Admin + seed | – |
+| M5 – Admin + seed | **hotovo** – viz [docs/M5.md](docs/M5.md), screenshoty [docs/m5/](docs/m5/) |
 | M6 – Kvalita | – |
 
 ## Vývoj
@@ -25,6 +25,7 @@ pnpm --filter @sauna/core report   # docs/reference/ref-*.md pro ruční ověře
 pnpm --filter @sauna/viewer demo   # demo vieweru (klávesy 1/2/3, S řez, P snímky, M posun kamen)
 pnpm dev                           # konfigurátor na http://localhost:5173/?tenant=demo (bez API: localStorage)
 pnpm --filter @sauna/api dev       # API na :3000 (PGlite, demo tenant); konfigurátor s VITE_API_BASE=http://localhost:3000
+VITE_API_BASE=http://localhost:3000 pnpm --filter @sauna/admin dev   # administrace na :5174
 pnpm e2e                           # testy v Chromiu (viewer + embed/konfigurátor), výstupy do docs/m2, docs/m3
 ```
 
