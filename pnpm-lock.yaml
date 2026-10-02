@@ -12,6 +12,25 @@ importers:
         specifier: ^5.9.0
         version: 5.9.3
 
+  apps/admin:
+    dependencies:
+      preact:
+        specifier: ^10.29.8
+        version: 10.29.8
+    devDependencies:
+      '@sauna/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+      vite:
+        specifier: ^7.3.6
+        version: 7.3.6(@types/node@22.20.4)(tsx@4.23.15)
+      vitest:
+        specifier: ^3.2.7
+        version: 3.2.7(@types/node@22.20.4)(tsx@4.23.15)
+
   apps/api:
     dependencies:
       '@electric-sql/pglite':
