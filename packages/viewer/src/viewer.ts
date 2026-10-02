@@ -106,7 +106,7 @@ export class SaunaViewer {
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1.0;
     this.renderer.shadowMap.enabled = this.quality.shadows;
-    this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    this.renderer.shadowMap.type = THREE.PCFShadowMap; // PCFSoftShadowMap was removed in r18x
     this.renderer.setPixelRatio(this.quality.dpr);
     performance.mark('sauna:renderer');
     this.renderer.domElement.style.display = 'block';
