@@ -20,7 +20,7 @@ async function boot() {
     document.documentElement.lang = locale;
     const i18n = createI18n(locale);
     document.title = `${i18n.t('app.title')} – ${tenant.name}`;
-    const repos = env.apiBase ? httpRepos(env.apiBase) : localRepos();
+    const repos = env.apiBase ? httpRepos(env.apiBase, tenant.slug) : localRepos();
     let initial: SaunaConfig = defaultConfig(tenant.catalog);
     let notice: string | undefined;
     if (env.configId) {

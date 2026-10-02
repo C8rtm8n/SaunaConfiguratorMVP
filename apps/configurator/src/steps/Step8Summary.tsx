@@ -4,6 +4,7 @@ import { Section } from '../components/ui.js';
 import type { Contact } from '../repo.js';
 import type { I18nKey } from '../i18n.js';
 import { shareUrl } from '../share.js';
+import { takeSnapshots } from '../snapshots.js';
 
 /** Upload limit for the site photo (UI/transport limit, not a domain value). */
 const PHOTO_MAX_MB = 10;
@@ -48,7 +49,8 @@ export function Step8Summary() {
     if (!formOk) return setMsg(t('form.invalid'));
     setState('sending');
     try {
-      const r = await repos.submitLead({ tenant: tenant.slug, config, contact: c, ...(photo ? { photo } : {}), locale: i18n.locale, clientPrice: Math.round(ev.price.total) });
+      const snapshots = await takeSnapshots();
+      const r = await repos.submitLead({ tenant: tenant.slug, config, contact: c, ...(photo ? { photo } : {}), locale: i18n.locale, clientPrice: Math.round(ev.price.total), snapshots });
       setState('sent');
       setMsg(t('form.sent', { id: r.leadId }));
       bridge.send('lead_submitted', { leadId: r.leadId, configId: r.configId, currency, ...(cat.rates.priceDisplay !== 'hidden' ? { value: Math.round(ev.price.total) } : {}) });

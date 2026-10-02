@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { SaunaViewer } from '@sauna/viewer';
 import { useApp } from '../state.js';
+import { registerSnapshots } from '../snapshots.js';
 
 /** 3D view, loaded lazily so the wizard and the price are interactive first (D-039). */
 export function ViewerPane() {
@@ -27,11 +28,13 @@ export function ViewerPane() {
       });
       viewer.current = v;
       v.setScene(appRef.current.ev.scene);
+      registerSnapshots(() => v.exportSnapshots());
       Object.assign(window, { __viewer: v });
       setReady(true);
     });
     return () => {
       disposed = true;
+      registerSnapshots(null);
       viewer.current?.dispose();
       viewer.current = null;
     };

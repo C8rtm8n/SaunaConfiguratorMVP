@@ -1,4 +1,4 @@
-import type { Evaluation, SaunaConfig } from '@sauna/core';
+import type { SaunaConfig } from '@sauna/core';
 
 /**
  * Persistence. M3 ships a local implementation (localStorage, same browser only);
@@ -29,6 +29,8 @@ export interface LeadInput {
   locale: string;
   /** Client-side summary for analytics only; the server recomputes everything. */
   clientPrice: number;
+  /** PNG renders for the offer PDF (view → data URL). */
+  snapshots?: Array<{ view: string; dataUrl: string }>;
 }
 
 export interface Repos {
@@ -81,32 +83,35 @@ export function localRepos(): Repos {
   };
 }
 
-/** M4: REST API (POST/PUT /configs, GET /configs/:id, POST /leads). */
-export function httpRepos(apiBase: string): Repos {
+/** M4: REST API (POST/PUT /configs, GET /configs/:id, POST /leads). The tenant is always explicit. */
+export function httpRepos(apiBase: string, tenant: string): Repos {
   const json = async (r: Response) => {
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     return r.json();
   };
+  const q = `tenant=${encodeURIComponent(tenant)}`;
   return {
     async saveConfig(config) {
       const isNew = !config.id || config.id === 'new';
-      const r = await fetch(`${apiBase}/configs${isNew ? '' : `/${config.id}`}`, {
+      const r = await fetch(`${apiBase}/configs${isNew ? '' : `/${encodeURIComponent(config.id)}?${q}`}`, {
         method: isNew ? 'POST' : 'PUT',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(config),
         credentials: 'omit',
       });
-      const e = (await json(r)) as Evaluation & { id: string; revision: number };
+      const e = (await json(r)) as { id: string; revision: number; config: SaunaConfig };
       return { id: e.id, revision: e.revision, config: e.config };
     },
     async loadConfig(id) {
-      const r = await fetch(`${apiBase}/configs/${encodeURIComponent(id)}`, { credentials: 'omit' });
+      const r = await fetch(`${apiBase}/configs/${encodeURIComponent(id)}?${q}`, { credentials: 'omit' });
       return r.status === 404 ? null : ((await json(r)) as { config: SaunaConfig }).config;
     },
     async submitLead(lead) {
       const fd = new FormData();
-      fd.set('payload', JSON.stringify({ ...lead, photo: undefined }));
-      if (lead.photo) fd.set('photo', lead.photo);
+      const { photo, snapshots, ...rest } = lead;
+      fd.set('payload', JSON.stringify({ ...rest, contact: lead.contact }));
+      if (photo) fd.set('photo', photo);
+      for (const s of snapshots ?? []) fd.set(`snapshot_${s.view}`, await (await fetch(s.dataUrl)).blob(), `${s.view}.png`);
       return (await json(await fetch(`${apiBase}/leads`, { method: 'POST', body: fd, credentials: 'omit' }))) as { leadId: string; configId: string };
     },
   };
