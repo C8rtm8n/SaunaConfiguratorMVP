@@ -109,6 +109,7 @@ export const DEFAULT_RULES: RuleDef[] = [
       bench: { cs: 'Před dveřmi {opening} překáží lavice {bench}.', de: 'Bank {bench} blockiert Tür {opening}.', en: 'Bench {bench} blocks door {opening}.' },
       heater: { cs: 'Před dveřmi {opening} překáží kamna.', de: 'Ofen blockiert Tür {opening}.', en: 'Heater blocks door {opening}.' },
     },
+    fix: { fn: 'doorPosition', label_i18n: { cs: 'Uvolnit průchod dveří', de: 'Türdurchgang freimachen', en: 'Clear the door passage' } },
     source: 'zadání MVP, pravidlo 4',
   },
   {

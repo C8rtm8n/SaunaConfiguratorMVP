@@ -17,6 +17,11 @@ const HEATER_PH = PH('TODO: ověřit v manuálu výrobce kamen – zástupné ho
 export const DEMO_CATALOG: Catalog = {
   tenantId: 'demo',
   version: 'demo-1',
+  pricing: 'cost',
+  modules: {
+    custom_frame: { length_mm: { min: 3600, max: 6000, step: 600 }, widths_mm: [2300, 2500], height_mm: 2700, grids_mm: [600] },
+    iso_20hc: { container: 'CONT-20HC', grids_mm: [600] },
+  },
 
   steel: [
     {

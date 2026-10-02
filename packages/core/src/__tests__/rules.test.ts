@@ -92,9 +92,24 @@ describe('R04 sauna door', () => {
     const e = run(REF1, undefined, (k) => (k.openings.find((o) => o.sku === 'DOOR-GLASS-700x1900')!.clearWidth_mm = 550));
     expect(has(e, 'R04', 'width')).toBe(true);
   });
-  it('bench must not block the door', () => {
+  it('bench must not block the door (fix moves the door)', () => {
     const e = run(REF1, (c) => Object.assign(c.openings.find((o) => o.id === 'door-1')!, { slotFrom: 5, slotTo: 6 }));
     expect(has(e, 'R04', 'bench')).toBe(true);
+    const f = fixed(e, 'R04');
+    expect(byRule(f, 'R04')).toEqual([]);
+    expect(errors(f)).toEqual([]);
+  });
+  it('R04 fix shortens the bench when the door cannot move', () => {
+    // REF-2 sauna door in the partition, bench on the W wall → put a 3-level bench on P1 next to the door.
+    const e = run(REF2, (c) => (c.sauna.benches = { ...c.sauna.benches, wall: 'P1', levels: 2 }));
+    expect(has(e, 'R04', 'bench')).toBe(true);
+    const f = fixed(e, 'R04');
+    expect(byRule(f, 'R04')).toEqual([]);
+  });
+  it('R02 fix may move the heater to another wall when its wall is full', () => {
+    const e = run(REF2, (c) => (c.sauna.heater = { ...c.sauna.heater, wall: 'S', along_mm: 1800 })); // S wall = panorama glass
+    const f = fixed(e, 'R02');
+    expect(byRule(f, 'R02')).toEqual([]);
   });
 });
 

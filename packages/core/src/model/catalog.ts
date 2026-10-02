@@ -368,9 +368,28 @@ export interface Limits {
 
 // -------------------------------------------------------------- catalog ---
 
+/** Module options offered by the wizard (D-036). */
+export interface ModuleOptions {
+  custom_frame: {
+    length_mm: { min: Mm; max: Mm; step: Mm };
+    widths_mm: Mm[];
+    /** Fixed height (Q3). */
+    height_mm: Mm;
+    grids_mm: GridMm[];
+  };
+  iso_20hc: { container: SkuRef; grids_mm: GridMm[] };
+}
+
 export interface Catalog {
   tenantId: string;
   version: string;
+  /**
+   * 'cost' = tenant catalog with purchase prices and margins (server, admin).
+   * 'sell' = public catalog: every cost field already includes its margin and all
+   * margins are 0, so `evaluate` gives the same prices without revealing costs (D-035).
+   */
+  pricing: 'cost' | 'sell';
+  modules: ModuleOptions;
   steel: SteelMaterial[];
   profiles: SteelProfile[];
   timber: TimberSection[];
@@ -416,5 +435,5 @@ export interface CatalogIndex {
   all<K extends CatalogKind>(kind: K): CatalogItemOf<K>[];
 }
 
-/** Public catalog (GET /tenants/:slug/public). Cost fields are stripped at runtime (M4). */
-export type PublicCatalog = Omit<Catalog, 'rates'> & { rates: Pick<Rates, 'priceDisplay' | 'priceRange' | 'eurPerCzk'> };
+/** Public catalog (GET /tenants/:slug/public): sell prices, no costs or margins (D-035). */
+export type PublicCatalog = Catalog & { pricing: 'sell' };

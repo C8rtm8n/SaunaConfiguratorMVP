@@ -269,20 +269,83 @@ export function suitableHeaters(ctx: BuildContext, eq: number, clearHeight: numb
     .sort((a, b) => a.sku.localeCompare(b.sku));
 }
 
-/** R02: nearest heater position on the same wall without collisions. */
+/** R02: nearest collision-free heater position – same wall first, then the other sauna walls. */
 const heaterPositionFix: FixFn = (ctx) => {
   const l = saunaLayout(ctx);
   if (!l?.heater) return null;
-  const face = l.heater.face;
   const w = l.heater.item.size.w_mm;
-  const cur = l.heater.centreAlong;
+  const cur = ctx.config.sauna.heater;
   const step = 50;
-  const cands: Mm[] = [];
-  for (let a = face.along[0] + w / 2; a <= face.along[1] - w / 2 + EPS; a += step) cands.push(Math.round(a / step) * step);
-  cands.sort((a, b) => Math.abs(a - cur) - Math.abs(b - cur));
-  const best = cands.find((a) => heaterCollisions(ctx, l, face, a).filter((f) => f.variant !== 'ceiling').length === 0);
-  return best === undefined || best === cur ? null : [{ op: 'replace', path: '/sauna/heater/along_mm', value: best }];
+  const walls = [cur.wall, ...[l.room.walls.S, l.room.walls.N, l.room.walls.west, l.room.walls.east].filter((x) => x !== cur.wall)];
+  for (const wall of walls) {
+    const face = roomWallFace(l.room.box, l.room.walls, wall);
+    if (!face) continue;
+    const ref = wall === cur.wall ? cur.along_mm : (face.along[0] + face.along[1]) / 2;
+    const cands: Mm[] = [];
+    for (let a = face.along[0] + w / 2; a <= face.along[1] - w / 2 + EPS; a += step) cands.push(Math.round(a / step) * step);
+    cands.sort((a, b) => Math.abs(a - ref) - Math.abs(b - ref) || a - b);
+    const best = cands.find((a) => a - w / 2 >= face.along[0] - EPS && a + w / 2 <= face.along[1] + EPS && heaterCollisions(ctx, l, face, a).filter((f) => f.variant !== 'ceiling').length === 0);
+    if (best === undefined || (wall === cur.wall && best === cur.along_mm)) continue;
+    return wall === cur.wall
+      ? [{ op: 'replace', path: '/sauna/heater/along_mm', value: best }]
+      : [
+          { op: 'replace', path: '/sauna/heater/wall', value: wall },
+          { op: 'replace', path: '/sauna/heater/along_mm', value: best },
+        ];
+  }
+  return null;
 };
 
-export const SAUNA_FIXES: Record<string, FixFn> = { suitableHeater: suitableHeaterFix, heaterPosition: heaterPositionFix };
+/** R04: move a blocked sauna door to the nearest free slot range on its wall. */
+const doorPositionFix: FixFn = (ctx) => {
+  const l = saunaLayout(ctx);
+  if (!l) return null;
+  const depth = ctx.catalog.catalog.limits.doorClearDepth_mm.value;
+  const blocked = (passage: Parameters<typeof boxesOverlap>[0]) =>
+    (l.bench?.segs ?? []).some((s) => boxesOverlap(passage, s.box)) || (!!l.heater && boxesOverlap(passage, l.heater.envelope));
+  for (const d of l.doors) {
+    if (!blocked(d.passage)) continue;
+    const o = d.placed.opening;
+    const lay = ctx.slots[o.wall];
+    if (!lay) continue;
+    const n = o.slotTo - o.slotFrom + 1;
+    const others = ctx.config.openings.filter((x) => x.wall === o.wall && x.id !== o.id);
+    const starts = Array.from({ length: lay.slots.length - n + 1 }, (_, i) => i).sort((a, b) => Math.abs(a - o.slotFrom) - Math.abs(b - o.slotFrom) || a - b);
+    for (const f of starts) {
+      if (f === o.slotFrom || others.some((x) => x.slotFrom <= f + n - 1 && x.slotTo >= f)) continue;
+      const a = lay.slots[f]!;
+      const b = lay.slots[f + n - 1]!;
+      const mid = (a.from_mm + b.to_mm) / 2;
+      const along: [Mm, Mm] = [mid - d.placed.product.width_mm / 2, mid + d.placed.product.width_mm / 2];
+      if (along[0] < a.clearFrom_mm - EPS || along[1] > b.clearTo_mm + EPS) continue;
+      if (along[0] < d.face.along[0] - EPS || along[1] > d.face.along[1] + EPS) continue; // stay in the sauna room
+      if ((o.wall === 'S' || o.wall === 'N') && ctx.geo.partitions.some((p) => along[0] < p.x_mm + p.thickness_mm / 2 && along[1] > p.x_mm - p.thickness_mm / 2)) continue;
+      if (blocked(faceBox(d.face, along, [0, depth], d.placed.z))) continue;
+      const i = ctx.config.openings.indexOf(o);
+      return [
+        { op: 'replace', path: `/openings/${i}/slotFrom`, value: f },
+        { op: 'replace', path: `/openings/${i}/slotTo`, value: f + n - 1 },
+      ];
+    }
+    // No free position for the door: shorten the main bench so that it ends at the passage.
+    const bench = l.bench;
+    if (!bench || (l.heater && boxesOverlap(d.passage, l.heater.envelope))) continue;
+    const main = bench.segs.filter((sg) => sg.leg === 'main');
+    if (!main.length || bench.segs.some((sg) => sg.leg === 'return' && boxesOverlap(d.passage, sg.box))) continue;
+    const ax = main[0]!.face.axis;
+    const [b0, b1] = main[0]!.along;
+    const [p0, p1] = [d.passage.min[ax], d.passage.max[ax]];
+    const keepLow: [Mm, Mm] = [b0, Math.min(b1, p0)];
+    const keepHigh: [Mm, Mm] = [Math.max(b0, p1), b1];
+    const keep = keepLow[1] - keepLow[0] >= keepHigh[1] - keepHigh[0] ? keepLow : keepHigh;
+    if (keep[1] - keep[0] < bench.system.maxSpan_mm / 2) continue;
+    return [
+      { op: 'add', path: '/sauna/benches/from_mm', value: Math.round(keep[0]) },
+      { op: 'add', path: '/sauna/benches/to_mm', value: Math.round(keep[1]) },
+    ];
+  }
+  return null;
+};
+
+export const SAUNA_FIXES: Record<string, FixFn> = { suitableHeater: suitableHeaterFix, heaterPosition: heaterPositionFix, doorPosition: doorPositionFix };
 

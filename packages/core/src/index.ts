@@ -12,3 +12,8 @@ export * from './model/productLine.js';
 export * from './model/api.js';
 export { evaluate } from './evaluate.js';
 export { createCatalogIndex } from './catalog/index.js';
+export * from './model/tenant.js';
+export { toPublicCatalog } from './catalog/public.js';
+export * from './edit/index.js';
+export { applyPatch } from './rules/patch.js';
+export { fillTemplate } from './report/markdown.js';
