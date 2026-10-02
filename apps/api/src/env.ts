@@ -37,7 +37,7 @@ export function readEnv(env: NodeJS.ProcessEnv = process.env): ApiConfig {
     configuratorUrl: req('CONFIGURATOR_URL', 'http://localhost:5173'),
     smtpUrl: req('SMTP_URL', 'memory'),
     mailFrom: env['MAIL_FROM'] ?? 'Konfigurátor <noreply@example.com>',
-    chromiumPath: env['CHROMIUM_PATH'] ?? '/opt/pw-browsers/chromium-1194/chrome-linux/chrome',
+    chromiumPath: env['CHROMIUM_PATH'] ?? '/opt/pw-browsers/chromium-1194/chrome-linux/chrome', // '' = bundled browser
     production,
     sessionTtlHours: Number(env['SESSION_TTL_HOURS'] ?? 24 * 7),
     magicLinkTtlMinutes: Number(env['MAGIC_LINK_TTL_MINUTES'] ?? 15),

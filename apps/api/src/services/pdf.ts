@@ -7,7 +7,8 @@ export class PdfRenderer {
 
   private launch(): Promise<Browser> {
     this.browser ??= import('playwright-core').then(({ chromium }) =>
-      chromium.launch({ executablePath: this.executablePath, args: ['--disable-gpu', '--no-sandbox'] }),
+      // Empty path = the browser bundled with playwright-core (Docker image mcr.microsoft.com/playwright).
+      chromium.launch({ ...(this.executablePath ? { executablePath: this.executablePath } : {}), args: ['--disable-gpu', '--no-sandbox'] }),
     );
     return this.browser;
   }
