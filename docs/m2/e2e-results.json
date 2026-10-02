@@ -1,7 +1,7 @@
 {
   "refs": {
     "ref-1": {
-      "readyMs": 1301,
+      "readyMs": 1435,
       "drawCalls": 105,
       "triangles": 4256,
       "geometries": 34,
@@ -11,7 +11,7 @@
       "fps": 0
     },
     "ref-2": {
-      "readyMs": 1187,
+      "readyMs": 1049,
       "drawCalls": 135,
       "triangles": 5168,
       "geometries": 40,
@@ -21,7 +21,7 @@
       "fps": 0
     },
     "ref-3": {
-      "readyMs": 2354,
+      "readyMs": 1995,
       "drawCalls": 149,
       "triangles": 3120,
       "geometries": 49,
@@ -68,28 +68,28 @@
       "detail": "iso_front 1600×1000, iso_back 1600×1000, front 1600×1000, section 1600×1000"
     },
     {
-      "name": "mobile 4G (9 Mbit/s, 170 ms): interactive in 2661 ms",
+      "name": "mobile 4G (9 Mbit/s, 170 ms): interactive in 2292 ms",
       "ok": true,
       "detail": ""
     },
     {
-      "name": "mobile slow 4G (1.6 Mbit/s, 150 ms): interactive in 3569 ms",
+      "name": "mobile slow 4G (1.6 Mbit/s, 150 ms): interactive in 3044 ms",
       "ok": true,
       "detail": ""
     }
   ],
   "mobile": {
     "4G (9 Mbit/s, 170 ms)": {
-      "readyMs": 2661,
+      "readyMs": 2292,
       "marks": {
         "responseEnd": 178,
-        "domContentLoaded": 2315,
-        "script-start": 685,
-        "sauna:renderer": 798,
-        "viewer-created": 846,
-        "evaluated": 1002,
-        "synced": 1152,
-        "first-render": 2310
+        "domContentLoaded": 1740,
+        "script-start": 625,
+        "sauna:renderer": 714,
+        "viewer-created": 753,
+        "evaluated": 904,
+        "synced": 1022,
+        "first-render": 1738
       },
       "drawCalls": 132,
       "triangles": 5132,
@@ -100,16 +100,17 @@
       "fps": 0
     },
     "slow 4G (1.6 Mbit/s, 150 ms)": {
-      "readyMs": 3569,
+      "readyMs": 3044,
       "marks": {
-        "responseEnd": 161,
-        "domContentLoaded": 3184,
-        "script-start": 1913,
-        "sauna:renderer": 1997,
-        "viewer-created": 2024,
-        "evaluated": 2085,
-        "synced": 2141,
-        "first-render": 3183
+        "responseEnd": 164,
+        "domContentLoaded": 2830,
+        "script-start": 1860,
+        "sauna:renderer": 1918,
+        "viewer-created": 1933,
+        "evaluated": 1970,
+        "synced": 2020,
+        "first-render": 2829,
+        "sauna:environment": 3846
       },
       "drawCalls": 132,
       "triangles": 5132,
