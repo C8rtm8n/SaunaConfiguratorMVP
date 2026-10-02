@@ -5,3 +5,6 @@ coverage/
 *.log
 .DS_Store
 dist-demo/
+dist-e2e/
+apps/api/.data/
+docs/m4/e2e-offer.pdf
