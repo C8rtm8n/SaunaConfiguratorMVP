@@ -1,0 +1,46 @@
+# Local stack: docker compose up --build
+#   demo manufacturer page  http://localhost:8080/          (embed → configurator)
+#   configurator            http://localhost:8080/configurator/?tenant=demo
+#   admin                   http://localhost:8080/admin/    (admin@demo-sauny.example, tenant demo)
+#   API                     http://localhost:3000
+#   e-mails (Mailpit)       http://localhost:8025          (magic links, leads with PDF/XLSX)
+name: sauna-configurator
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: sauna
+      POSTGRES_PASSWORD: sauna
+      POSTGRES_DB: sauna
+    volumes: [dbdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sauna"]
+      interval: 5s
+      retries: 20
+  mailpit:
+    image: axllent/mailpit:v1.21
+    ports: ["8025:8025"]
+  api:
+    build: { context: ., dockerfile: docker/api.Dockerfile }
+    depends_on:
+      db: { condition: service_healthy }
+      mailpit: { condition: service_started }
+    environment:
+      NODE_ENV: production
+      SEED_DEMO: "1"
+      DATABASE_URL: postgres://sauna:sauna@db:5432/sauna
+      PUBLIC_API_URL: http://localhost:3000
+      ADMIN_URL: http://localhost:8080/admin/
+      CONFIGURATOR_URL: http://localhost:8080/configurator/
+      SMTP_URL: smtp://mailpit:1025
+      MAIL_FROM: "Konfigurátor <noreply@demo-sauny.example>"
+    ports: ["3000:3000"]
+  web:
+    build:
+      context: .
+      dockerfile: docker/web.Dockerfile
+      args: { API_URL: http://localhost:3000, PUBLIC_URL: http://localhost:8080 }
+    depends_on: [api]
+    ports: ["8080:80"]
+volumes:
+  dbdata:
