@@ -9,7 +9,10 @@
     "typecheck": "pnpm -r typecheck",
     "test": "pnpm -r test",
     "report": "pnpm --filter @sauna/core report",
-    "e2e": "pnpm --filter @sauna/viewer build:demo && pnpm --filter @sauna/viewer e2e"
+    "e2e": "pnpm --filter @sauna/viewer build:demo && pnpm --filter @sauna/viewer e2e && pnpm e2e:m3",
+    "build": "pnpm --filter @sauna/embed build && pnpm --filter @sauna/configurator build",
+    "e2e:m3": "pnpm build && node apps/embed/test/e2e.mjs",
+    "dev": "pnpm --filter @sauna/configurator dev"
   },
   "devDependencies": {
     "typescript": "^5.9.0"

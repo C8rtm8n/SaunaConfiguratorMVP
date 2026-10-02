@@ -10,7 +10,7 @@ deterministicky přes `@sauna/core`. Stejný kód běží na klientu i na server
 |---|---|
 | M1 – Core | **hotovo** – viz [docs/M1-PROPOSAL.md](docs/M1-PROPOSAL.md), reporty [docs/reference/](docs/reference/) |
 | M2 – Viewer | **hotovo** – viz [docs/M2.md](docs/M2.md), screenshoty [docs/m2/](docs/m2/) |
-| M3 – Configurator + embed | – |
+| M3 – Configurator + embed | **hotovo** – viz [docs/M3.md](docs/M3.md), screenshoty [docs/m3/](docs/m3/) |
 | M4 – API + výstupy | – |
 | M5 – Admin + seed | – |
 | M6 – Kvalita | – |
@@ -23,7 +23,8 @@ pnpm typecheck
 pnpm test
 pnpm --filter @sauna/core report   # docs/reference/ref-*.md pro ruční ověření
 pnpm --filter @sauna/viewer demo   # demo vieweru (klávesy 1/2/3, S řez, P snímky, M posun kamen)
-pnpm e2e                           # build dema + test v Chromiu, výstupy do docs/m2/
+pnpm dev                           # konfigurátor na http://localhost:5173/?tenant=demo
+pnpm e2e                           # testy v Chromiu (viewer + embed/konfigurátor), výstupy do docs/m2, docs/m3
 ```
 
 ## Použití core

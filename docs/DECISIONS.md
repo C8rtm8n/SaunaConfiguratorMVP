@@ -117,3 +117,30 @@ Každé číslo z oboru je v katalogu (`Limits`, `Rates`, položky) se zdrojem. 
 - **D-034 – Snímky pro PDF.** `exportSnapshots()` vyrenderuje 4 pohledy (iso zepředu, iso zezadu, čelní pohled na S stěnu,
   iso v řezu) 1 600 × 1 000 na hlavním canvasu v jednom tasku (bez blikání, bez `preserveDrawingBuffer`) a vrací PNG data URL.
   Upload na server je v M4. Stav: přijato.
+
+## Konfigurátor a embed (M3)
+
+- **D-035 – Veřejný katalog s prodejními cenami.** `GET /tenants/:slug/public` vrací katalog, kde je každá nákladová položka už
+  vynásobená `(1 + marže kategorie)` a všechny marže jsou 0 (`toPublicCatalog`). Cena je v těchto položkách lineární, takže
+  `evaluate` dá v prohlížeči stejnou cenu, BOM i hmotnost jako na serveru (test na REF-1..3), aniž by prohlížeč znal nákupní ceny
+  nebo marže. Server zůstává autoritativní: při uložení i u poptávky přepočítá konfiguraci s plným katalogem. Stav: přijato.
+- **D-036 – Volby modulu v katalogu.** `catalog.modules`: custom délka 3 600–6 000 po 600, šířky 2 300 / 2 500, pevná výška 2 700,
+  rastr 600; ISO = odkaz na kontejner. Průvodce z nich staví ovládací prvky. Stav: přijato.
+- **D-037 – Editační operace v core.** `defaultConfig`, `normalizeConfig`, `addOpening`, `setLayout`, `setTerrace`, `setOverhang`.
+  Normalizace drží konfiguraci strukturálně konzistentní: rozměry z katalogu, 1–2 zóny s příčkou v rastru, otvory na existujících
+  stěnách a ve slotech (posun na nejbližší volnou polohu, neprochází příčkou), stěny kamen a lavic v sauně. Je idempotentní.
+  Doménová pravidla (kolize, objem…) dál hlásí `evaluate` a UI nabízí opravy. Stav: přijato.
+- **D-038 – Embed protokol.** Zprávy `{ source: 'sauna-configurator', v: 1, type, payload }`. Embed kontroluje `event.origin` (origin
+  konfigurátoru) a `event.source` (svůj iframe), konfigurátor posílá jen na `origin` hostitele předaný v URL. Události
+  `ready`, `resize`, `step_change`, `price_change` (debounce 600 ms), `config_saved` a `lead_submitted` se na hostiteli vyvolají jako
+  `CustomEvent('sauna:<type>')` a jdou do `window.dataLayer` (`sauna_<type>`) pro GA4/GTM. V iframe není žádná analytika ani cookies.
+  Iframe se vytvoří při přiblížení do viewportu (rootMargin 200 px), s `data-load="click"` až po kliknutí na poster.
+  Výška iframe se řídí obsahem: konfigurátor proto nepoužívá `vh` ani `scrollIntoView`, který by posouval stránku hostitele. Stav: přijato.
+- **D-039 – Pořadí načítání.** Průvodce, cena a kontrola (Preact + core) se načtou první (47 kB gzip), 3D (Three.js + viewer,
+  168 kB gzip) dynamickým importem. Data demo tenanta (11 kB) se načítají jen bez API. Stav: přijato.
+- **D-040 – Ukládání v M3.** Bez API ukládá konfigurátor do `localStorage` svého originu (sdílený odkaz funguje ve stejném
+  prohlížeči). `httpRepos` je připravený pro M4 (`VITE_API_BASE`). Sdílený odkaz vede na **stránku výrobce** s `?c=<id>`, embed
+  `c` předá do iframe. Stav: přijato pro M3, v M4 server.
+- **D-041 – Opravy jedním klikem.** R02 hledá volnou polohu kamen nejdřív na stejné stěně, pak na ostatních stěnách sauny.
+  R04 (lavice nebo kamna v průchodu dveří) posune dveře na nejbližší volné sloty, a když to nejde, zkrátí hlavní lavici o průchod
+  (zbytek musí mít aspoň polovinu max. rozpětí). Stav: přijato.
