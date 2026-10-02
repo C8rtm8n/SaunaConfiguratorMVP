@@ -25,6 +25,7 @@ import {
 import { EXPORTS, buildExport, type ExportName } from './services/documentsFor.js';
 import { HttpError, activeCatalog, publicView, recompute, summaryOf, tenantPublic } from './services/evaluate.js';
 import { MemoryMailer, type Mailer } from './services/mailer.js';
+import { registerAdmin } from './routes/admin.js';
 import type { PdfRenderer } from './services/pdf.js';
 import { IMAGE_MIME, SNAPSHOT_VIEWS, UPLOAD_LIMITS, leadPayloadSchema, parseConfig } from './validation.js';
 
@@ -47,7 +48,7 @@ export async function buildApp(deps: AppDeps): Promise<FastifyInstance> {
   await app.register(cors, {
     delegator: (req, cb) => {
       const url = req.url ?? '';
-      if (isAdminPath(url)) cb(null, { origin: [cfg.adminUrl], credentials: true, methods: ['GET', 'POST', 'PATCH', 'DELETE'] });
+      if (isAdminPath(url)) cb(null, { origin: [new URL(cfg.adminUrl).origin], credentials: true, methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'] });
       else cb(null, { origin: true, credentials: false, methods: ['GET', 'POST', 'PUT'] });
     },
   });
@@ -57,6 +58,8 @@ export async function buildApp(deps: AppDeps): Promise<FastifyInstance> {
   app.setErrorHandler((err, req, reply) => {
     if (err instanceof ZodError) return reply.code(400).send({ error: 'invalid input', issues: err.issues.slice(0, 20).map((i) => ({ path: i.path.join('.'), message: i.message })) });
     if (err instanceof HttpError) return reply.code(err.status).send({ error: err.message, ...(err.details ? { details: err.details } : {}) });
+    // Malformed multipart bodies (busboy) carry no status code.
+    if (/multipart|boundary|Unexpected end of form|Malformed part header/i.test((err as Error).message ?? '')) return reply.code(400).send({ error: 'malformed multipart body' });
     const status = (err as { statusCode?: number }).statusCode;
     if (status && status < 500) return reply.code(status).send({ error: (err as Error).message });
     req.log.error(err);
@@ -228,6 +231,8 @@ export async function buildApp(deps: AppDeps): Promise<FastifyInstance> {
     reply.header('content-type', f.mime).header('content-disposition', `attachment; filename="${f.name}"`).header('cache-control', 'private, no-store');
     return reply.send(f.data);
   });
+
+  registerAdmin(app, { db, cfg });
 
   // ---------------------------------------------------------------- dev
   if (!cfg.production && mailer instanceof MemoryMailer) {

@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit -p .",
     "test": "vitest run",
     "e2e": "tsx test/e2e-lead.ts",
-    "docs:samples": "tsx scripts/sample-docs.ts"
+    "docs:samples": "tsx scripts/sample-docs.ts",
+    "e2e:admin": "tsx test/e2e-admin.ts"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.5.8",

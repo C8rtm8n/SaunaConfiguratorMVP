@@ -149,3 +149,25 @@ export async function enqueue(db: Db, tenantId: string, type: string, payload: R
 }
 
 export { sql };
+
+// ---------------------------------------------------------------- catalogs
+
+export async function listCatalogVersions(db: Db, tenantId: string) {
+  return db.select({ version: catalogVersions.version, createdAt: catalogVersions.createdAt }).from(catalogVersions).where(eq(catalogVersions.tenantId, tenantId)).orderBy(desc(catalogVersions.createdAt));
+}
+
+/** Stores an immutable catalog version and makes it active (one transaction). */
+export async function publishCatalog(db: Db, tenantId: string, slug: string, catalog: Catalog): Promise<string> {
+  return db.transaction(async (tx) => {
+    const n = (await tx.select({ n: sql<number>`count(*)::int` }).from(catalogVersions).where(eq(catalogVersions.tenantId, tenantId)))[0]!.n;
+    let version = `${slug}-${n + 1}`;
+    while ((await tx.select({ v: catalogVersions.version }).from(catalogVersions).where(and(eq(catalogVersions.tenantId, tenantId), eq(catalogVersions.version, version)))).length) version += 'b';
+    await tx.insert(catalogVersions).values({ tenantId, version, catalog: { ...catalog, tenantId: slug, version, pricing: 'cost' } });
+    await tx.update(tenants).set({ activeCatalogVersion: version }).where(eq(tenants.id, tenantId));
+    return version;
+  });
+}
+
+export async function updateTenant(db: Db, tenantId: string, patch: { name?: string; settings?: TenantSettings }): Promise<void> {
+  await db.update(tenants).set(patch).where(eq(tenants.id, tenantId));
+}
