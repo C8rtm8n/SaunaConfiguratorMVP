@@ -32,13 +32,17 @@ declare global {
     const d = { ...sd, ...el.dataset };
     const tenant = d['tenant'] ?? 'demo';
     el.style.position = 'relative';
-    el.style.minHeight = el.style.minHeight || '480px';
+    // Reserve the expected configurator height up front (no layout shift when the iframe loads, D-054):
+    // narrow = 3D view 4:3 above the wizard, wide = two columns. data-height overrides.
+    const w = el.clientWidth || window.innerWidth;
+    const reserve = Number(d['height']) || Math.round(w < 900 ? w * 0.75 + 740 : 790);
+    el.style.minHeight = `${reserve}px`;
 
     const poster = document.createElement('button');
     poster.type = 'button';
     poster.textContent = d['label'] ?? 'Konfigurátor sauny';
     poster.setAttribute('aria-label', poster.textContent);
-    poster.style.cssText = 'all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;width:100%;min-height:480px;border-radius:12px;font:600 18px/1.3 system-ui,sans-serif;color:#fff;background:#3b2a20 center/cover no-repeat';
+    poster.style.cssText = `all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;width:100%;min-height:${reserve}px;border-radius:12px;font:600 18px/1.3 system-ui,sans-serif;color:#fff;background:#3b2a20 center/cover no-repeat`;
     const posterUrl = d['poster'] ?? new URL(`posters/${tenant}.webp`, appUrl).href;
     poster.style.backgroundImage = `linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.25)),url("${posterUrl}")`;
     el.appendChild(poster);
@@ -55,7 +59,7 @@ declare global {
       frame.title = poster.textContent ?? 'Sauna';
       frame.allow = 'fullscreen; clipboard-write';
       frame.referrerPolicy = 'strict-origin-when-cross-origin';
-      frame.style.cssText = 'display:block;width:100%;height:640px;border:0;border-radius:12px';
+      frame.style.cssText = `display:block;width:100%;height:${reserve}px;border:0;border-radius:12px`;
       frame.addEventListener('load', () => send({ ...make<ToFrame, 'host'>('host', { href: location.href }) }));
       el.replaceChild(frame, poster);
     };
@@ -67,7 +71,10 @@ declare global {
       if (!m) return;
       if (m.type === 'resize') {
         const h = (m.payload as ToHost['resize']).height;
-        if (h > 0 && h < 20000) frame.style.height = `${Math.ceil(h)}px`;
+        if (h > 0 && h < 20000) {
+          frame.style.height = `${Math.ceil(h)}px`;
+          el.style.minHeight = '';
+        }
         return;
       }
       if (m.type === 'ready') send(make<ToFrame, 'host'>('host', { href: location.href }));

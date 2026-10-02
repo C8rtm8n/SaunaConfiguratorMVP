@@ -21,7 +21,8 @@
     <div class="hero">Venkovní sauny na míru</div>
     <main>
       <h2>Nakonfigurujte si saunu</h2>
-      <!-- the embed snippet -->
+      <!-- the embed snippet (the <style> line is optional: reserves the height before embed.js runs → no layout shift) -->
+      <style>[data-sauna-configurator]:not([data-sauna-mounted])::before{content:"";display:block;padding-top:75%;height:740px}@media(min-width:900px){[data-sauna-configurator]:not([data-sauna-mounted])::before{padding-top:0;height:790px}}</style>
       <script src="__CDN__/embed.js" data-tenant="demo" data-lang="cs" async></script>
       <div data-sauna-configurator></div>
       <h3>Události pro analytiku</h3>

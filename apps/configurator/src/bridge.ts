@@ -13,6 +13,11 @@ export class Bridge {
       const m = parse<ToFrame>(ev.data);
       if (m?.type === 'host') this.hostHref = (m.payload as ToFrame['host']).href;
     });
+  }
+
+  /** Starts height reporting once the app has rendered (no shrink to the loading state, D-054). */
+  start(): void {
+    if (!this.hostOrigin || this.ro) return;
     this.ro = new ResizeObserver(() => this.postHeight());
     this.ro.observe(document.documentElement);
   }
