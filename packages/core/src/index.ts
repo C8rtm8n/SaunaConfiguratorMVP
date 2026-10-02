@@ -17,3 +17,4 @@ export { toPublicCatalog } from './catalog/public.js';
 export * from './edit/index.js';
 export { applyPatch } from './rules/patch.js';
 export { fillTemplate } from './report/markdown.js';
+export { planSvg, type PlanOptions } from './report/plan.js';

@@ -8,8 +8,14 @@ import type { Catalog, PriceCategory, PublicCatalog } from '../model/catalog.js'
  */
 export function toPublicCatalog(c: Catalog): PublicCatalog {
   if (c.pricing === 'sell') return c as PublicCatalog;
+  // Price display 'hidden': the browser gets no prices at all (zero factor).
+  if (c.rates.priceDisplay === 'hidden') return scaled(c, () => 0);
   const m = c.rates.margin;
-  const k = (cat: PriceCategory) => 1 + m[cat];
+  return scaled(c, (cat) => 1 + m[cat]);
+}
+
+function scaled(c: Catalog, k: (cat: PriceCategory) => number): PublicCatalog {
+  const m = c.rates.margin;
   const zero = Object.fromEntries(Object.keys(m).map((x) => [x, 0])) as Record<PriceCategory, number>;
   return {
     ...c,
