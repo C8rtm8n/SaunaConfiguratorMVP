@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="data:," />
+    <title>Demo Sauny s.r.o. – sauny na míru</title>
+    <style>
+      body { margin: 0; font: 16px/1.6 Georgia, serif; color: #222; background: #fff; }
+      header, main, footer { max-width: 1200px; margin: 0 auto; padding: 24px 16px; }
+      .hero { height: 1500px; background: linear-gradient(#e9e2d8, #c9b8a3); display: grid; place-items: center; font-size: 32px; }
+      #log { font: 12px monospace; white-space: pre-wrap; background: #f4f4f4; padding: 8px; max-height: 200px; overflow: auto; }
+    </style>
+    <script>
+      // Host analytics (GTM/GA4 would read this dataLayer).
+      window.dataLayer = window.dataLayer || [];
+    </script>
+  </head>
+  <body>
+    <header><strong>Demo Sauny s.r.o.</strong> · Sauny · Reference · Kontakt</header>
+    <div class="hero">Venkovní sauny na míru</div>
+    <main>
+      <h2>Nakonfigurujte si saunu</h2>
+      <!-- the embed snippet -->
+      <script src="__CDN__/embed.js" data-tenant="demo" data-lang="cs" async></script>
+      <div data-sauna-configurator></div>
+      <h3>Události pro analytiku</h3>
+      <div id="log"></div>
+    </main>
+    <footer>© Demo Sauny s.r.o.</footer>
+    <script>
+      document.addEventListener('sauna:lead_submitted', (e) => console.log('lead', e.detail));
+      const push = window.dataLayer.push.bind(window.dataLayer);
+      window.dataLayer.push = (...a) => {
+        document.getElementById('log').textContent += JSON.stringify(a[0]) + '\n';
+        return push(...a);
+      };
+    </script>
+  </body>
+</html>
