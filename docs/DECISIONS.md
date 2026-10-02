@@ -198,3 +198,23 @@ Každé číslo z oboru je v katalogu (`Limits`, `Rates`, položky) se zdrojem. 
   lavice abachi; 2 kamna na dřevo + 2 elektrická jako placeholder; okna 600×600, 900×600, panorama 2 400×1 200, prosklené čelo,
   celoskleněné dveře 700×1 900) a uživatele `admin@demo-sauny.example`. Spouští se při startu API mimo produkci
   (v produkci se `SEED_DEMO=1`) nebo přes `pnpm --filter @sauna/api seed`. Stav: přijato.
+
+## Kvalita (M6)
+
+- **D-054 – Embed bez posunu obsahu.** Async `embed.js` znamená, že kontejner má do jeho spuštění výšku 0 a obsah pod ním
+  poskočí (CLS 0,65 při umístění nahoře). Proto:
+  1. `embed.js` hned nastaví `min-height` podle odhadu: `data-height`, jinak na šířce < 900 px `0,75 × šířka + 740`, jinak 790 px.
+     Odhad platí do první zprávy `resize`.
+  2. Konfigurátor posílá výšku až po prvním vykreslení.
+  3. Snippet má volitelný řádek `<style>` (`::before` rezervuje stejnou výšku, vypne ho atribut `data-sauna-mounted`).
+  Výsledek: CLS 0, Lighthouse beze změny (100 → 100). Stav: přijato.
+- **D-055 – Povolené weby pro embed.** Když tenant vyplní `embedOrigins`, konfigurátor v iframe porovná origin rodiče
+  (`location.ancestorOrigins`, jinak `document.referrer`) a na jiném webu se nespustí. Jde o ochranu proti nechtěnému vložení
+  a zneužití brandingu, ne o bezpečnostní hranici. Data chrání API (tenant, rate-limit). Pro tvrdé vynucení doporučuji
+  v produkci posílat na `/configurator/` hlavičku CSP `frame-ancestors` generovanou z `embedOrigins`. Admin má vždy
+  `frame-ancestors 'none'`. Stav: přijato.
+- **D-056 – Docker.** API běží v image Playwright stejné verze jako `playwright-core`, aby PDF renderer měl odpovídající
+  Chromium bez dalšího stahování. Web (embed, konfigurátor, admin) je statický build za nginx. Lokální e-maily zachytává
+  Mailpit. Stav: přijato.
+- **D-057 – CI.** GitHub Actions: typecheck, testy na PGlite i PostgreSQL 16, build. Prohlížečové e2e a Lighthouse zatím
+  běží lokálně (potřebují GPU emulaci a delší čas). Doporučuji je přidat jako noční job. Stav: přijato.

@@ -13,7 +13,7 @@ deterministicky přes `@sauna/core`. Stejný kód běží na klientu i na server
 | M3 – Configurator + embed | **hotovo** – viz [docs/M3.md](docs/M3.md), screenshoty [docs/m3/](docs/m3/) |
 | M4 – API + výstupy | **hotovo** – viz [docs/M4.md](docs/M4.md), ukázkové PDF/XLSX [docs/m4/](docs/m4/) |
 | M5 – Admin + seed | **hotovo** – viz [docs/M5.md](docs/M5.md), screenshoty [docs/m5/](docs/m5/) |
-| M6 – Kvalita | – |
+| M6 – Kvalita | **hotovo** – viz [docs/M6.md](docs/M6.md), akceptace [docs/ACCEPTANCE.md](docs/ACCEPTANCE.md) |
 
 ## Vývoj
 
@@ -26,8 +26,21 @@ pnpm --filter @sauna/viewer demo   # demo vieweru (klávesy 1/2/3, S řez, P sn�
 pnpm dev                           # konfigurátor na http://localhost:5173/?tenant=demo (bez API: localStorage)
 pnpm --filter @sauna/api dev       # API na :3000 (PGlite, demo tenant); konfigurátor s VITE_API_BASE=http://localhost:3000
 VITE_API_BASE=http://localhost:3000 pnpm --filter @sauna/admin dev   # administrace na :5174
-pnpm e2e                           # testy v Chromiu (viewer + embed/konfigurátor), výstupy do docs/m2, docs/m3
+pnpm e2e                           # testy v Chromiu (viewer + embed/konfigurátor + API + admin), výstupy do docs/m2–m5
+pnpm --filter @sauna/e2e lighthouse # Lighthouse: stránka hostitele bez/s embedem → docs/m6
+pnpm --filter @sauna/e2e full      # celý tok hostitel → poptávka → e-maily → admin, 2 tenanti → docs/m6
 ```
+
+API testy na skutečném PostgreSQL: `TEST_DATABASE_URL=postgres://… pnpm --filter @sauna/api test`.
+
+### Docker Compose
+
+```sh
+docker compose up --build
+```
+
+Stránka hostitele s embedem na http://localhost:8080/, konfigurátor na `/configurator/`, admin na `/admin/`
+(`admin@demo-sauny.example`, magic link v Mailpitu na http://localhost:8025/), API na http://localhost:3000.
 
 ## Použití core
 
