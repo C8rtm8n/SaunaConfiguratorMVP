@@ -4,6 +4,9 @@ on:
   push:
   pull_request:
 
+env:
+  CHROMIUM_PATH: ''
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -23,6 +26,8 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      # PDFs are rendered in the API tests → Playwright's bundled Chromium (CHROMIUM_PATH='' selects it).
+      - run: pnpm --filter @sauna/api exec playwright-core install --with-deps chromium
       - run: pnpm typecheck
       # Unit + API tests on in-memory PGlite …
       - run: pnpm test

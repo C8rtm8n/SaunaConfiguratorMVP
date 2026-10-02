@@ -55,7 +55,7 @@ export async function setup(): Promise<Ctx> {
       await d.end();
     };
   }
-  const cfg = { ...readEnv({ NODE_ENV: 'test' }), databaseUrl: dbUrl, publicUrl: 'http://api.test', adminUrl: 'http://admin.test', configuratorUrl: 'http://cfg.test/' };
+  const cfg = { ...readEnv({ NODE_ENV: 'test', CHROMIUM_PATH: process.env['CHROMIUM_PATH'] }), databaseUrl: dbUrl, publicUrl: 'http://api.test', adminUrl: 'http://admin.test', configuratorUrl: 'http://cfg.test/' };
   const { db, close } = await openDb(cfg.databaseUrl);
   const demo = await seedDemo(db, { salesEmail: 'sales@demo-sauny.example', webhookUrl: `http://127.0.0.1:${port}/hook`, webhookSecret: 's3cret' });
   const other = await createTenant(db, {
