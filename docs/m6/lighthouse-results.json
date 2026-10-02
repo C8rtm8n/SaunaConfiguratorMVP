@@ -1,0 +1,191 @@
+{
+  "runs": 3,
+  "results": {
+    "baseline": {
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 82
+      },
+      "metrics": {
+        "fcp_ms": 629,
+        "lcp_ms": 629,
+        "tbt_ms": 0,
+        "cls": 0,
+        "bytes": 1090
+      },
+      "runs": [
+        {
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 82
+          },
+          "metrics": {
+            "fcp_ms": 629,
+            "lcp_ms": 629,
+            "tbt_ms": 0,
+            "cls": 0,
+            "bytes": 1090
+          }
+        },
+        {
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 82
+          },
+          "metrics": {
+            "fcp_ms": 627,
+            "lcp_ms": 627,
+            "tbt_ms": 0,
+            "cls": 0,
+            "bytes": 1090
+          }
+        },
+        {
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 82
+          },
+          "metrics": {
+            "fcp_ms": 644,
+            "lcp_ms": 644,
+            "tbt_ms": 0,
+            "cls": 0,
+            "bytes": 1090
+          }
+        }
+      ]
+    },
+    "embed": {
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 82
+      },
+      "metrics": {
+        "fcp_ms": 633,
+        "lcp_ms": 1209,
+        "tbt_ms": 0,
+        "cls": 0,
+        "bytes": 25219
+      },
+      "runs": [
+        {
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 82
+          },
+          "metrics": {
+            "fcp_ms": 624,
+            "lcp_ms": 1208,
+            "tbt_ms": 0,
+            "cls": 0,
+            "bytes": 25219
+          }
+        },
+        {
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 82
+          },
+          "metrics": {
+            "fcp_ms": 633,
+            "lcp_ms": 1209,
+            "tbt_ms": 0,
+            "cls": 0,
+            "bytes": 25219
+          }
+        },
+        {
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 82
+          },
+          "metrics": {
+            "fcp_ms": 639,
+            "lcp_ms": 1227,
+            "tbt_ms": 0,
+            "cls": 0,
+            "bytes": 25219
+          }
+        }
+      ]
+    },
+    "embedTop": {
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 82
+      },
+      "metrics": {
+        "fcp_ms": 651,
+        "lcp_ms": 1356,
+        "tbt_ms": 0,
+        "cls": 0,
+        "bytes": 252527
+      },
+      "runs": [
+        {
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 82
+          },
+          "metrics": {
+            "fcp_ms": 995,
+            "lcp_ms": 1357,
+            "tbt_ms": 0,
+            "cls": 0,
+            "bytes": 252527
+          }
+        },
+        {
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 82
+          },
+          "metrics": {
+            "fcp_ms": 603,
+            "lcp_ms": 1356,
+            "tbt_ms": 0,
+            "cls": 0,
+            "bytes": 252527
+          }
+        },
+        {
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 82
+          },
+          "metrics": {
+            "fcp_ms": 651,
+            "lcp_ms": 1356,
+            "tbt_ms": 0,
+            "cls": 0,
+            "bytes": 252527
+          }
+        }
+      ]
+    }
+  }
+}

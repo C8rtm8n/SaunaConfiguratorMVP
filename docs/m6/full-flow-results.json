@@ -1,0 +1,51 @@
+{
+  "results": [
+    {
+      "name": "configurator in the iframe loads the tenant from the API",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "R01 offered a one-click heater fix for the larger sauna",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "configuration (4,8 m, window, front terrace) has no errors",
+      "ok": true,
+      "detail": "0 errors"
+    },
+    {
+      "name": "host page receives lead_submitted",
+      "ok": true,
+      "detail": "le887ou5ie0dfop"
+    },
+    {
+      "name": "lead with offer.pdf, tech.pdf and bom.xlsx delivered within 1 minute",
+      "ok": true,
+      "detail": "6156 ms"
+    },
+    {
+      "name": "server price = price computed in the browser (same core)",
+      "ok": true,
+      "detail": "server 410821 / client 410821"
+    },
+    {
+      "name": "admin downloads offer.pdf, tech.pdf, bom.xlsx",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "another tenant: no leads, detail and export not found",
+      "ok": true,
+      "detail": "export 404"
+    },
+    {
+      "name": "no page errors",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "leadDelivery_ms": 6156,
+  "total_ms": 18161
+}

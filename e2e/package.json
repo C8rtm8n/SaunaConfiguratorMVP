@@ -1,0 +1,20 @@
+{
+  "name": "@sauna/e2e",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lighthouse": "node lighthouse.mjs",
+    "full": "tsx full-flow.ts"
+  },
+  "devDependencies": {
+    "@sauna/api": "workspace:*",
+    "@sauna/core": "workspace:*",
+    "@types/node": "^22.20.4",
+    "chrome-launcher": "^1.2.2",
+    "lighthouse": "^13.5.0",
+    "playwright-core": "1.55.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  }
+}
