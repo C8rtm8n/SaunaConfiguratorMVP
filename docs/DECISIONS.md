@@ -144,3 +144,32 @@ Každé číslo z oboru je v katalogu (`Limits`, `Rates`, položky) se zdrojem. 
 - **D-041 – Opravy jedním klikem.** R02 hledá volnou polohu kamen nejdřív na stejné stěně, pak na ostatních stěnách sauny.
   R04 (lavice nebo kamna v průchodu dveří) posune dveře na nejbližší volné sloty, a když to nejde, zkrátí hlavní lavici o průchod
   (zbytek musí mít aspoň polovinu max. rozpětí). Stav: přijato.
+
+## API a výstupy (M4)
+
+- **D-042 – Izolace tenantů v dotazech.** Každá tabulka s daty tenanta má `tenant_id` a každá funkce repozitáře (`repo.ts`) ho dostává
+  povinně a filtruje podle něj. Veřejná ID jsou náhodná (`c…`, `l…`, 14 znaků), ne sekvenční. Veřejný `GET/PUT /configs/:id` vyžaduje
+  `?tenant=`, admin endpointy berou tenanta jen ze session (ne z URL). Cizí data vrací 404, ne 403. Ověřeno testy
+  (export, revize, poptávky, soubory, změna stavu, magic link přes tenanty). Stav: přijato.
+- **D-043 – Server je autoritativní.** `POST/PUT /configs` i `POST /leads` konfiguraci znovu normalizují a přepočítají přes core
+  s aktivním katalogem tenanta. Uložená revize obsahuje konfiguraci, verzi katalogu a souhrn (cena, náklad, hmotnost, počty chyb).
+  Poptávka s chybou (`submittable = false`) se odmítne s 422 i na serveru. Exporty starších revizí se počítají s verzí katalogu,
+  se kterou byly uloženy (verze katalogu jsou neměnné). Stav: přijato.
+- **D-044 – Exporty.** `bom.csv` (jedna tabulka, oddělovač `;`, UTF-8 BOM pro český Excel), `bom.xlsx` (listy Ocel, Dřevo a plášť,
+  Nakupované díly, Souhrn hmotností), `config.json` (konfigurace + všechny výstupy bez 3D scény, `schemaVersion`),
+  `offer.pdf` (jazyk zákazníka) a `tech.pdf` (výchozí jazyk tenanta). PDF vzniká z HTML šablony v headless Chromiu bez přístupu
+  k síti. Obrázky jsou vložené přímo do HTML, půdorys je SVG z core (`planSvg`). Stav: přijato.
+- **D-045 – Admin auth.** Magic link (32 B náhodný token, v DB jen SHA-256, platnost 15 min, jednorázový) → session cookie
+  `httpOnly`, `SameSite=Lax`, `Secure` v produkci. Neznámý e-mail dostane stejnou odpověď (204) bez e-mailu. Role `admin`
+  a `sales` mají v M4 stejná práva k leadům a exportům, správa katalogu (M5) bude jen pro `admin`. Rate limit: magic link
+  5/min, poptávky 10/min, ukládání 60/min na IP. Stav: přijato.
+- **D-046 – Fronta úloh v DB.** Tabulka `jobs`, úlohu si worker zamkne přes `FOR UPDATE SKIP LOCKED`, takže API může běžet ve více
+  instancích. `lead.process` vyrobí PDF × 2 + XLSX, uloží je k poptávce a pošle e-mail výrobci (přílohy + foto místa) a zákazníkovi
+  (nabídka). `lead.webhook` posílá `POST` s hlavičkou `X-Sauna-Signature: t=<unix>,v1=<HMAC-SHA256(secret, "t.body")>`.
+  Při chybě se úloha opakuje s exponenciálním čekáním (5 s … 1 h, max. 6 pokusů). Stav: přijato.
+- **D-047 – Databáze.** Drizzle ORM, migrace generované `drizzle-kit` ze schématu (`apps/api/drizzle`). Produkce běží na PostgreSQL
+  (`DATABASE_URL=postgres://…`), lokální vývoj a testy bez serveru na PGlite (`pglite://memory`), se stejným SQL i migracemi.
+  Testy běží na obou (`TEST_DATABASE_URL`). Soubory (foto, snímky, PDF, XLSX) jsou v MVP v tabulce `files` (bytea), objektové
+  úložiště řeší M6. Stav: přijato.
+- **D-048 – Skrytá cena.** Když tenant cenu nezobrazuje, veřejný katalog nemá žádné ceny (vše 0) a veřejné odpovědi API neobsahují
+  `price.total`. Cenu vidí jen výrobce v e-mailu, exportech a souhrnu revize. Stav: přijato.

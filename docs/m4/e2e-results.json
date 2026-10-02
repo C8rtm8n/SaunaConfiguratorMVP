@@ -1,0 +1,45 @@
+{
+  "results": [
+    {
+      "name": "configurator loads the tenant from the API",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "save stores a server revision",
+      "ok": true,
+      "detail": "cy4gq654fbbc84k rev 1"
+    },
+    {
+      "name": "lead accepted by the API",
+      "ok": true,
+      "detail": "Děkujeme! Poptávka laxaiedc25meln6 byla odeslána. Ozveme se vám."
+    },
+    {
+      "name": "4 snapshots uploaded with the lead",
+      "ok": true,
+      "detail": "iso_front, iso_back, front, section"
+    },
+    {
+      "name": "lead with both PDFs and XLSX delivered within 1 minute",
+      "ok": true,
+      "detail": "5330 ms, attachments: nabidka-cy4gq654fbbc84k.pdf, technicky-list-cy4gq654fbbc84k.pdf, kusovnik-cy4gq654fbbc84k.xlsx"
+    },
+    {
+      "name": "offer PDF contains the uploaded renders",
+      "ok": true,
+      "detail": "1086077 B"
+    },
+    {
+      "name": "shared link loads the configuration from the API",
+      "ok": true,
+      "detail": "cy4gq654fbbc84k"
+    },
+    {
+      "name": "no page errors",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "leadDelivery_ms": 5330
+}

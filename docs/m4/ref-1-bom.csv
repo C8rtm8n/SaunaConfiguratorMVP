@@ -1,0 +1,35 @@
+﻿pozice;kategorie;sestava;sku;popis;material;profil;delka_mm;mnozstvi;mj;kg_m;kg_celkem;povrch_m2;prorez_pct;preprava
+S01;steel;frame;PRF-RHS100x100x4;RHS 100×100×4;S235JRH;RHS 100×100×4;4096;2;ks;11,7;95,846;3,138;5;fixed
+S02;steel;frame;PRF-RHS100x100x4;RHS 100×100×4;S235JRH;RHS 100×100×4;1996;2;ks;11,7;46,706;1,529;5;fixed
+S03;steel;frame;PRF-RHS60x40x3;RHS 60×40×3;S235JRH;RHS 60×40×3;2036;6;ks;4,25;51,918;2,345;5;fixed
+S04;steel;frame;PRF-RHS60x40x3;RHS 60×40×3;S235JRH;RHS 60×40×3;1996;6;ks;4,25;50,898;2,299;5;fixed
+S05;steel;frame;PRF-RHS80x80x3;RHS 80×80×3;S235JRH;RHS 80×80×3;4096;2;ks;7,07;57,917;2,531;5;fixed
+S06;steel;frame;PRF-RHS80x80x3;RHS 80×80×3;S235JRH;RHS 80×80×3;2411;9;ks;7,07;153,412;6,705;5;fixed
+S07;steel;frame;PRF-RHS80x80x3;RHS 80×80×3;S235JRH;RHS 80×80×3;2036;2;ks;7,07;28,789;1,258;5;fixed
+D01;timber;shell;BOTTOM-SHEET;Spodní krycí plech 0,5 mm;ocelový plech Pz;;;8,995;m2;;41,376;;8;fixed
+D02;timber;shell;CLAD-THERMO-26x92;Thermowood borovice 26×92 rhombus;thermowood borovice;;;33,23;m2;;332,3;;12;fixed
+D03;timber;shell;MEM-DIFF;Difuzní fólie;PP fólie;;;42,89;m2;;6,434;;10;fixed
+D04;timber;shell;ROOF-TRAPEZ;Střešní trapéz T35 0,6 mm;ocelový plech Pz + lak;;;9,66;m2;;56,028;;8;fixed
+D05;timber;shell;SHEATH-OSB-22;OSB/3 22 mm;OSB/3;;;9,66;m2;;131,376;;8;fixed
+D06;timber;shell;TIM-BATTEN-25x50;Lať smrk 25×50;smrk;25×50;;55,383;m;;31,153;;10;fixed
+D07;timber;shell;TIM-BATTEN-50x50;Lať smrk 50×50;smrk;50×50;;16,1;m;;18,113;;10;fixed
+D08;timber;insulation;INS-MW-100;Minerální vata 100 mm;minerální vata;;;8,995;m2;;31,482;;5;fixed
+D09;timber;insulation;INS-MW-50;Minerální vata 50 mm;minerální vata;;;28,004;m2;;49,008;;5;fixed
+D10;timber;insulation;INS-MW-80;Minerální vata 80 mm;minerální vata;;;39,73;m2;;111,244;;5;fixed
+D11;timber;interior;BENCH-BOARD-ABACHI-28;Lavicové prkno abachi 28×90;abachi;;;3,207;m2;;30,784;;10;fixed
+D12;timber;interior;FLOOR-THERMO-28;Podlaha thermowood 28 mm;thermowood borovice;;;6,96;m2;;82,127;;10;fixed
+D13;timber;interior;INT-ASPEN-15;Osika SHP 15×90;osika;;;30,55;m2;;207,742;;10;fixed
+D14;timber;interior;SHEATH-OSB-22;OSB/3 22 mm;OSB/3;;;6,96;m2;;94,655;;8;fixed
+D15;timber;interior;TIM-BATTEN-25x50;Lať smrk 25×50;smrk;25×50;;50,917;m;;28,641;;10;fixed
+D16;timber;interior;TIM-BATTEN-50x50;Lať smrk 50×50;smrk;50×50;;50,917;m;;57,282;;10;fixed
+D17;timber;interior;TIM-SUPPORT-45x70;Podpěra lavice osika 45×70;osika;70×45;;14,5;m;;20,554;;10;fixed
+D18;timber;interior;VB-ALU;Parozábrana Al (saunová);Al fólie;;;30,55;m2;;6,11;;10;fixed
+N01;purchased;frame;LUG-20;Závěsné oko 2 t;;;;4;ks;;10;;0;fixed
+N02;purchased;shell;VENT-GRILLE-100;Větrací mřížka – odvod;;;;1;ks;;0,3;;0;fixed
+N03;purchased;shell;VENT-GRILLE-100;Větrací mřížka – přívod;;;;1;ks;;0,3;;0;fixed
+N04;purchased;glazing;DOOR-GLASS-700x1900;Celoskleněné dveře 700×1 900;;;;1;ks;;45;;0;fixed
+N05;purchased;glazing;WIN-900x600;Okno 900×600;;;;1;ks;;32;;0;fixed
+N06;purchased;heater;HEATER-WOOD-A;Kamna na dřevo 16 kW (placeholder) vč. kamenů 60 kg;;;;1;ks;;130;;0;fixed
+N07;purchased;chimney;CHIMNEY-SET-115;Komínová sestava Ø115 izolovaná (vč. průchodky střechou);;;;1;ks;;35;;0;demounted
+N08;purchased;electrical;LED-STRIP-SAUNA;LED pásek saunový 2 m;;;;2;ks;;1;;0;fixed
+N09;purchased;foundation;PAD-CONCRETE;Betonová patka 400×400;;;;6;ks;;270;;0;demounted

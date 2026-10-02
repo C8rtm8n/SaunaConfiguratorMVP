@@ -1,0 +1,2122 @@
+{
+  "schemaVersion": 1,
+  "evaluationSchemaVersion": 1,
+  "tenant": "Demo Sauny s.r.o.",
+  "configId": "csbghvhhcqcljpi",
+  "revision": 1,
+  "catalogVersion": "demo-1",
+  "config": {
+    "id": "csbghvhhcqcljpi",
+    "sauna": {
+      "heater": {
+        "sku": "HEATER-EL-B",
+        "wall": "S",
+        "along_mm": 3200
+      },
+      "zoneId": "z-sauna",
+      "benches": {
+        "wall": "N",
+        "layout": "straight",
+        "levels": 2,
+        "system": "BENCH-ABACHI",
+        "from_mm": 2500
+      },
+      "lighting": [
+        {
+          "qty": 1,
+          "sku": "LED-STRIP-SAUNA",
+          "mount": "under_bench"
+        }
+      ],
+      "interiorCladding": "INT-ASPEN-15"
+    },
+    "zones": [
+      {
+        "id": "z-changing",
+        "type": "changing",
+        "to_mm": 1800,
+        "from_mm": 0
+      },
+      {
+        "id": "z-sauna",
+        "type": "sauna",
+        "to_mm": 6058,
+        "from_mm": 1800
+      }
+    ],
+    "module": {
+      "type": "iso_20hc",
+      "L_mm": 6058,
+      "W_mm": 2438,
+      "H_mm": 2896,
+      "grid_mm": 600
+    },
+    "cladding": {
+      "roof": "ROOF-TRAPEZ",
+      "exterior": "CLAD-THERMO-26x92",
+      "orientation": "vertical"
+    },
+    "openings": [
+      {
+        "id": "front",
+        "sku": "GLASS-FRONT-ISO",
+        "type": "glass_front",
+        "wall": "E",
+        "slotTo": 3,
+        "slotFrom": 0
+      },
+      {
+        "id": "door-1",
+        "sku": "DOOR-GLASS-700x1900",
+        "door": {
+          "hinge": "left",
+          "swing": "out"
+        },
+        "type": "door",
+        "wall": "S",
+        "slotTo": 2,
+        "slotFrom": 1
+      },
+      {
+        "id": "door-sauna",
+        "sku": "DOOR-GLASS-700x1900",
+        "door": {
+          "hinge": "right",
+          "swing": "out"
+        },
+        "type": "door",
+        "wall": "P1",
+        "slotTo": 1,
+        "slotFrom": 0
+      }
+    ],
+    "revision": 1,
+    "tenantId": "demo",
+    "foundation": "beams",
+    "attachments": [],
+    "productLine": "sauna",
+    "schemaVersion": 1,
+    "catalogVersion": "demo-1"
+  },
+  "outputs": {
+    "schemaVersion": 1,
+    "config": {
+      "id": "csbghvhhcqcljpi",
+      "sauna": {
+        "heater": {
+          "sku": "HEATER-EL-B",
+          "wall": "S",
+          "along_mm": 3200
+        },
+        "zoneId": "z-sauna",
+        "benches": {
+          "wall": "N",
+          "layout": "straight",
+          "levels": 2,
+          "system": "BENCH-ABACHI",
+          "from_mm": 2500
+        },
+        "lighting": [
+          {
+            "qty": 1,
+            "sku": "LED-STRIP-SAUNA",
+            "mount": "under_bench"
+          }
+        ],
+        "interiorCladding": "INT-ASPEN-15"
+      },
+      "zones": [
+        {
+          "id": "z-changing",
+          "type": "changing",
+          "to_mm": 1800,
+          "from_mm": 0
+        },
+        {
+          "id": "z-sauna",
+          "type": "sauna",
+          "to_mm": 6058,
+          "from_mm": 1800
+        }
+      ],
+      "module": {
+        "type": "iso_20hc",
+        "L_mm": 6058,
+        "W_mm": 2438,
+        "H_mm": 2896,
+        "grid_mm": 600
+      },
+      "cladding": {
+        "roof": "ROOF-TRAPEZ",
+        "exterior": "CLAD-THERMO-26x92",
+        "orientation": "vertical"
+      },
+      "openings": [
+        {
+          "id": "front",
+          "sku": "GLASS-FRONT-ISO",
+          "type": "glass_front",
+          "wall": "E",
+          "slotTo": 3,
+          "slotFrom": 0
+        },
+        {
+          "id": "door-1",
+          "sku": "DOOR-GLASS-700x1900",
+          "door": {
+            "hinge": "left",
+            "swing": "out"
+          },
+          "type": "door",
+          "wall": "S",
+          "slotTo": 2,
+          "slotFrom": 1
+        },
+        {
+          "id": "door-sauna",
+          "sku": "DOOR-GLASS-700x1900",
+          "door": {
+            "hinge": "right",
+            "swing": "out"
+          },
+          "type": "door",
+          "wall": "P1",
+          "slotTo": 1,
+          "slotFrom": 0
+        }
+      ],
+      "revision": 1,
+      "tenantId": "demo",
+      "foundation": "beams",
+      "attachments": [],
+      "productLine": "sauna",
+      "schemaVersion": 1,
+      "catalogVersion": "demo-1"
+    },
+    "catalogVersion": "demo-1",
+    "geometry": {
+      "envelope": {
+        "min": [
+          -52,
+          -52,
+          0
+        ],
+        "max": [
+          6110,
+          2490,
+          2982
+        ]
+      },
+      "structure": {
+        "min": [
+          0,
+          0,
+          0
+        ],
+        "max": [
+          6058,
+          2438,
+          2896
+        ]
+      },
+      "inner": {
+        "min": [
+          134,
+          134,
+          258
+        ],
+        "max": [
+          5924,
+          2304,
+          2765
+        ]
+      },
+      "layups": {
+        "wall": {
+          "sku": "LAY-I-WALL",
+          "layers": [
+            {
+              "kind": "panel",
+              "thickness_mm": 26,
+              "offset_mm": 0,
+              "sku": "CLAD-THERMO-26x92"
+            },
+            {
+              "kind": "members",
+              "thickness_mm": 25,
+              "offset_mm": 26,
+              "sku": "TIM-BATTEN-25x50",
+              "spacing_mm": 600
+            },
+            {
+              "kind": "panel",
+              "thickness_mm": 1,
+              "offset_mm": 51,
+              "sku": "MEM-DIFF"
+            },
+            {
+              "kind": "structure",
+              "thickness_mm": 43,
+              "offset_mm": 52
+            },
+            {
+              "kind": "members",
+              "thickness_mm": 50,
+              "offset_mm": 95,
+              "sku": "TIM-BATTEN-50x50",
+              "fill": "INS-MW-50",
+              "spacing_mm": 600
+            },
+            {
+              "kind": "panel",
+              "thickness_mm": 1,
+              "offset_mm": 145,
+              "sku": "VB-ALU"
+            },
+            {
+              "kind": "members",
+              "thickness_mm": 25,
+              "offset_mm": 146,
+              "sku": "TIM-BATTEN-25x50",
+              "spacing_mm": 600
+            },
+            {
+              "kind": "panel",
+              "thickness_mm": 15,
+              "offset_mm": 171,
+              "sku": "INT-ASPEN-15"
+            }
+          ],
+          "ext_mm": 52,
+          "structure_mm": 43,
+          "int_mm": 91,
+          "total_mm": 186,
+          "insulated": true
+        },
+        "roof": {
+          "sku": "LAY-I-ROOF",
+          "layers": [
+            {
+              "kind": "panel",
+              "thickness_mm": 35,
+              "offset_mm": 0,
+              "sku": "ROOF-TRAPEZ"
+            },
+            {
+              "kind": "members",
+              "thickness_mm": 50,
+              "offset_mm": 35,
+              "sku": "TIM-BATTEN-50x50",
+              "spacing_mm": 600
+            },
+            {
+              "kind": "panel",
+              "thickness_mm": 1,
+              "offset_mm": 85,
+              "sku": "MEM-DIFF"
+            },
+            {
+              "kind": "structure",
+              "thickness_mm": 40,
+              "offset_mm": 86
+            },
+            {
+              "kind": "members",
+              "thickness_mm": 50,
+              "offset_mm": 126,
+              "sku": "TIM-BATTEN-50x50",
+              "fill": "INS-MW-50",
+              "spacing_mm": 600
+            },
+            {
+              "kind": "panel",
+              "thickness_mm": 1,
+              "offset_mm": 176,
+              "sku": "VB-ALU"
+            },
+            {
+              "kind": "members",
+              "thickness_mm": 25,
+              "offset_mm": 177,
+              "sku": "TIM-BATTEN-25x50",
+              "spacing_mm": 600
+            },
+            {
+              "kind": "panel",
+              "thickness_mm": 15,
+              "offset_mm": 202,
+              "sku": "INT-ASPEN-15"
+            }
+          ],
+          "ext_mm": 86,
+          "structure_mm": 40,
+          "int_mm": 91,
+          "total_mm": 217,
+          "insulated": true
+        },
+        "floor": {
+          "sku": "LAY-I-FLOOR",
+          "layers": [
+            {
+              "kind": "structure",
+              "thickness_mm": 158,
+              "offset_mm": 0
+            },
+            {
+              "kind": "members",
+              "thickness_mm": 50,
+              "offset_mm": 158,
+              "sku": "TIM-BATTEN-50x50",
+              "fill": "INS-MW-50",
+              "spacing_mm": 600
+            },
+            {
+              "kind": "panel",
+              "thickness_mm": 22,
+              "offset_mm": 208,
+              "sku": "SHEATH-OSB-22"
+            },
+            {
+              "kind": "panel",
+              "thickness_mm": 28,
+              "offset_mm": 230,
+              "sku": "FLOOR-THERMO-28"
+            }
+          ],
+          "ext_mm": 0,
+          "structure_mm": 158,
+          "int_mm": 100,
+          "total_mm": 258,
+          "insulated": true
+        },
+        "partition": {
+          "sku": "LAY-PARTITION",
+          "layers": [
+            {
+              "kind": "panel",
+              "thickness_mm": 15,
+              "offset_mm": 0,
+              "sku": "INT-ASPEN-15"
+            },
+            {
+              "kind": "members",
+              "thickness_mm": 25,
+              "offset_mm": 15,
+              "sku": "TIM-BATTEN-25x50",
+              "spacing_mm": 600
+            },
+            {
+              "kind": "panel",
+              "thickness_mm": 1,
+              "offset_mm": 40,
+              "sku": "VB-ALU"
+            },
+            {
+              "kind": "members",
+              "thickness_mm": 95,
+              "offset_mm": 41,
+              "sku": "TIM-KVH-45x95",
+              "fill": "INS-MW-100",
+              "spacing_mm": 600
+            },
+            {
+              "kind": "panel",
+              "thickness_mm": 15,
+              "offset_mm": 136,
+              "sku": "INT-ASPEN-15"
+            }
+          ],
+          "ext_mm": 0,
+          "structure_mm": 0,
+          "int_mm": 151,
+          "total_mm": 151,
+          "insulated": true
+        }
+      },
+      "partitions": [
+        {
+          "id": "P1",
+          "x_mm": 1800,
+          "thickness_mm": 151
+        }
+      ],
+      "rooms": [
+        {
+          "zoneId": "z-changing",
+          "zoneType": "changing",
+          "box": {
+            "min": [
+              134,
+              134,
+              258
+            ],
+            "max": [
+              1724.5,
+              2304,
+              2765
+            ]
+          },
+          "walls": {
+            "S": "S",
+            "N": "N",
+            "west": "W",
+            "east": "P1"
+          }
+        },
+        {
+          "zoneId": "z-sauna",
+          "zoneType": "sauna",
+          "box": {
+            "min": [
+              1875.5,
+              134,
+              258
+            ],
+            "max": [
+              5924,
+              2304,
+              2765
+            ]
+          },
+          "walls": {
+            "S": "S",
+            "N": "N",
+            "west": "P1",
+            "east": "E"
+          }
+        }
+      ]
+    },
+    "auto": [
+      {
+        "ruleId": "R06",
+        "components": [
+          {
+            "id": "ventilation",
+            "builder": "sauna.ventilation",
+            "params": {
+              "supply": [
+                3200,
+                134,
+                558
+              ],
+              "exhaust": [
+                5624,
+                2304,
+                2465
+              ],
+              "supplyWall": "S",
+              "exhaustWall": "N"
+            }
+          }
+        ],
+        "note": {
+          "cs": "Větrání: přívod na stěně {supplyWall} u kamen, odvod diagonálně na stěně {exhaustWall} pod stropem.",
+          "de": "Lüftung: Zuluft an Wand {supplyWall} beim Ofen, Abluft diagonal an Wand {exhaustWall} unter der Decke.",
+          "en": "Ventilation: supply on wall {supplyWall} at the heater, exhaust diagonally on wall {exhaustWall} below the ceiling."
+        },
+        "params": {
+          "supplyWall": "S",
+          "exhaustWall": "N"
+        }
+      },
+      {
+        "ruleId": "R07",
+        "components": [
+          {
+            "id": "reinf-front",
+            "builder": "shell.reinforcement",
+            "params": {
+              "openingId": "front"
+            }
+          }
+        ],
+        "note": {
+          "cs": "Otvor {opening} ({slots} slotů > {limit}): doplněn výztužný rám.",
+          "de": "Öffnung {opening} ({slots} Slots > {limit}): Verstärkungsrahmen ergänzt.",
+          "en": "Opening {opening} ({slots} slots > {limit}): reinforcement frame added."
+        },
+        "params": {
+          "opening": "front",
+          "slots": 4,
+          "limit": 1
+        }
+      },
+      {
+        "ruleId": "R07",
+        "components": [
+          {
+            "id": "reinf-door-1",
+            "builder": "shell.reinforcement",
+            "params": {
+              "openingId": "door-1"
+            }
+          }
+        ],
+        "note": {
+          "cs": "Otvor {opening} ({slots} slotů > {limit}): doplněn výztužný rám.",
+          "de": "Öffnung {opening} ({slots} Slots > {limit}): Verstärkungsrahmen ergänzt.",
+          "en": "Opening {opening} ({slots} slots > {limit}): reinforcement frame added."
+        },
+        "params": {
+          "opening": "door-1",
+          "slots": 2,
+          "limit": 1
+        }
+      },
+      {
+        "ruleId": "R09",
+        "components": [
+          {
+            "id": "bench-supports-main-L1",
+            "builder": "sauna.benchSupports",
+            "params": {
+              "segId": "main-L1",
+              "count": 2
+            }
+          }
+        ],
+        "note": {
+          "cs": "Lavice {bench}: rozpětí {span_mm} mm > {max_mm} mm, doplněno {count} podpěr.",
+          "de": "Bank {bench}: Spannweite {span_mm} mm > {max_mm} mm, {count} Stützen ergänzt.",
+          "en": "Bench {bench}: span {span_mm} mm > {max_mm} mm, {count} supports added."
+        },
+        "params": {
+          "bench": "main-L1",
+          "span_mm": 3424,
+          "max_mm": 1500,
+          "count": 2
+        }
+      },
+      {
+        "ruleId": "R09",
+        "components": [
+          {
+            "id": "bench-supports-main-L0",
+            "builder": "sauna.benchSupports",
+            "params": {
+              "segId": "main-L0",
+              "count": 2
+            }
+          }
+        ],
+        "note": {
+          "cs": "Lavice {bench}: rozpětí {span_mm} mm > {max_mm} mm, doplněno {count} podpěr.",
+          "de": "Bank {bench}: Spannweite {span_mm} mm > {max_mm} mm, {count} Stützen ergänzt.",
+          "en": "Bench {bench}: span {span_mm} mm > {max_mm} mm, {count} supports added."
+        },
+        "params": {
+          "bench": "main-L0",
+          "span_mm": 3424,
+          "max_mm": 1500,
+          "count": 2
+        }
+      },
+      {
+        "ruleId": "R10",
+        "components": [],
+        "note": {
+          "cs": "Přípojka kamen: {power_kw} kW / {voltage} V, jistič {breaker_A} A, kabel {cable} (orientačně, ověří elektroprojektant).",
+          "de": "Anschluss: {power_kw} kW / {voltage} V, Sicherung {breaker_A} A, Kabel {cable} (Richtwert).",
+          "en": "Heater supply: {power_kw} kW / {voltage} V, breaker {breaker_A} A, cable {cable} (indicative)."
+        },
+        "params": {
+          "power_kw": 18,
+          "voltage": 400,
+          "breaker_A": 32,
+          "cable": "CYKY-J 5×6"
+        }
+      }
+    ],
+    "slots": {
+      "S": {
+        "surface": "S",
+        "axis": "x",
+        "from_mm": -52,
+        "to_mm": 6110,
+        "slots": [
+          {
+            "index": 0,
+            "from_mm": 29,
+            "to_mm": 629,
+            "clearFrom_mm": 150,
+            "clearTo_mm": 629
+          },
+          {
+            "index": 1,
+            "from_mm": 629,
+            "to_mm": 1229,
+            "clearFrom_mm": 629,
+            "clearTo_mm": 1229,
+            "occupiedBy": "door-1"
+          },
+          {
+            "index": 2,
+            "from_mm": 1229,
+            "to_mm": 1829,
+            "clearFrom_mm": 1229,
+            "clearTo_mm": 1829,
+            "occupiedBy": "door-1"
+          },
+          {
+            "index": 3,
+            "from_mm": 1829,
+            "to_mm": 2429,
+            "clearFrom_mm": 1829,
+            "clearTo_mm": 2429
+          },
+          {
+            "index": 4,
+            "from_mm": 2429,
+            "to_mm": 3029,
+            "clearFrom_mm": 2429,
+            "clearTo_mm": 3029
+          },
+          {
+            "index": 5,
+            "from_mm": 3029,
+            "to_mm": 3629,
+            "clearFrom_mm": 3029,
+            "clearTo_mm": 3629
+          },
+          {
+            "index": 6,
+            "from_mm": 3629,
+            "to_mm": 4229,
+            "clearFrom_mm": 3629,
+            "clearTo_mm": 4229
+          },
+          {
+            "index": 7,
+            "from_mm": 4229,
+            "to_mm": 4829,
+            "clearFrom_mm": 4229,
+            "clearTo_mm": 4829
+          },
+          {
+            "index": 8,
+            "from_mm": 4829,
+            "to_mm": 5429,
+            "clearFrom_mm": 4829,
+            "clearTo_mm": 5429
+          },
+          {
+            "index": 9,
+            "from_mm": 5429,
+            "to_mm": 6029,
+            "clearFrom_mm": 5429,
+            "clearTo_mm": 5908
+          }
+        ],
+        "fillers": [
+          {
+            "from_mm": -52,
+            "to_mm": 29
+          },
+          {
+            "from_mm": 6029,
+            "to_mm": 6110
+          }
+        ]
+      },
+      "N": {
+        "surface": "N",
+        "axis": "x",
+        "from_mm": -52,
+        "to_mm": 6110,
+        "slots": [
+          {
+            "index": 0,
+            "from_mm": 29,
+            "to_mm": 629,
+            "clearFrom_mm": 150,
+            "clearTo_mm": 629
+          },
+          {
+            "index": 1,
+            "from_mm": 629,
+            "to_mm": 1229,
+            "clearFrom_mm": 629,
+            "clearTo_mm": 1229
+          },
+          {
+            "index": 2,
+            "from_mm": 1229,
+            "to_mm": 1829,
+            "clearFrom_mm": 1229,
+            "clearTo_mm": 1829
+          },
+          {
+            "index": 3,
+            "from_mm": 1829,
+            "to_mm": 2429,
+            "clearFrom_mm": 1829,
+            "clearTo_mm": 2429
+          },
+          {
+            "index": 4,
+            "from_mm": 2429,
+            "to_mm": 3029,
+            "clearFrom_mm": 2429,
+            "clearTo_mm": 3029
+          },
+          {
+            "index": 5,
+            "from_mm": 3029,
+            "to_mm": 3629,
+            "clearFrom_mm": 3029,
+            "clearTo_mm": 3629
+          },
+          {
+            "index": 6,
+            "from_mm": 3629,
+            "to_mm": 4229,
+            "clearFrom_mm": 3629,
+            "clearTo_mm": 4229
+          },
+          {
+            "index": 7,
+            "from_mm": 4229,
+            "to_mm": 4829,
+            "clearFrom_mm": 4229,
+            "clearTo_mm": 4829
+          },
+          {
+            "index": 8,
+            "from_mm": 4829,
+            "to_mm": 5429,
+            "clearFrom_mm": 4829,
+            "clearTo_mm": 5429
+          },
+          {
+            "index": 9,
+            "from_mm": 5429,
+            "to_mm": 6029,
+            "clearFrom_mm": 5429,
+            "clearTo_mm": 5908
+          }
+        ],
+        "fillers": [
+          {
+            "from_mm": -52,
+            "to_mm": 29
+          },
+          {
+            "from_mm": 6029,
+            "to_mm": 6110
+          }
+        ]
+      },
+      "W": {
+        "surface": "W",
+        "axis": "y",
+        "from_mm": -52,
+        "to_mm": 2490,
+        "slots": [
+          {
+            "index": 0,
+            "from_mm": 19,
+            "to_mm": 619,
+            "clearFrom_mm": 150,
+            "clearTo_mm": 619
+          },
+          {
+            "index": 1,
+            "from_mm": 619,
+            "to_mm": 1219,
+            "clearFrom_mm": 619,
+            "clearTo_mm": 1219
+          },
+          {
+            "index": 2,
+            "from_mm": 1219,
+            "to_mm": 1819,
+            "clearFrom_mm": 1219,
+            "clearTo_mm": 1819
+          },
+          {
+            "index": 3,
+            "from_mm": 1819,
+            "to_mm": 2419,
+            "clearFrom_mm": 1819,
+            "clearTo_mm": 2288
+          }
+        ],
+        "fillers": [
+          {
+            "from_mm": -52,
+            "to_mm": 19
+          },
+          {
+            "from_mm": 2419,
+            "to_mm": 2490
+          }
+        ]
+      },
+      "E": {
+        "surface": "E",
+        "axis": "y",
+        "from_mm": -52,
+        "to_mm": 2490,
+        "slots": [
+          {
+            "index": 0,
+            "from_mm": 19,
+            "to_mm": 619,
+            "clearFrom_mm": 150,
+            "clearTo_mm": 619,
+            "occupiedBy": "front"
+          },
+          {
+            "index": 1,
+            "from_mm": 619,
+            "to_mm": 1219,
+            "clearFrom_mm": 619,
+            "clearTo_mm": 1219,
+            "occupiedBy": "front"
+          },
+          {
+            "index": 2,
+            "from_mm": 1219,
+            "to_mm": 1819,
+            "clearFrom_mm": 1219,
+            "clearTo_mm": 1819,
+            "occupiedBy": "front"
+          },
+          {
+            "index": 3,
+            "from_mm": 1819,
+            "to_mm": 2419,
+            "clearFrom_mm": 1819,
+            "clearTo_mm": 2288,
+            "occupiedBy": "front"
+          }
+        ],
+        "fillers": [
+          {
+            "from_mm": -52,
+            "to_mm": 19
+          },
+          {
+            "from_mm": 2419,
+            "to_mm": 2490
+          }
+        ]
+      },
+      "P1": {
+        "surface": "P1",
+        "axis": "y",
+        "from_mm": 134,
+        "to_mm": 2304,
+        "slots": [
+          {
+            "index": 0,
+            "from_mm": 319,
+            "to_mm": 919,
+            "clearFrom_mm": 319,
+            "clearTo_mm": 919,
+            "occupiedBy": "door-sauna"
+          },
+          {
+            "index": 1,
+            "from_mm": 919,
+            "to_mm": 1519,
+            "clearFrom_mm": 919,
+            "clearTo_mm": 1519,
+            "occupiedBy": "door-sauna"
+          },
+          {
+            "index": 2,
+            "from_mm": 1519,
+            "to_mm": 2119,
+            "clearFrom_mm": 1519,
+            "clearTo_mm": 2119
+          }
+        ],
+        "fillers": [
+          {
+            "from_mm": 134,
+            "to_mm": 319
+          },
+          {
+            "from_mm": 2119,
+            "to_mm": 2304
+          }
+        ]
+      },
+      "roof": {
+        "surface": "roof",
+        "axis": "x",
+        "from_mm": -52,
+        "to_mm": 6110,
+        "slots": [
+          {
+            "index": 0,
+            "from_mm": 29,
+            "to_mm": 629,
+            "clearFrom_mm": 29,
+            "clearTo_mm": 629
+          },
+          {
+            "index": 1,
+            "from_mm": 629,
+            "to_mm": 1229,
+            "clearFrom_mm": 629,
+            "clearTo_mm": 1229
+          },
+          {
+            "index": 2,
+            "from_mm": 1229,
+            "to_mm": 1829,
+            "clearFrom_mm": 1229,
+            "clearTo_mm": 1829
+          },
+          {
+            "index": 3,
+            "from_mm": 1829,
+            "to_mm": 2429,
+            "clearFrom_mm": 1829,
+            "clearTo_mm": 2429
+          },
+          {
+            "index": 4,
+            "from_mm": 2429,
+            "to_mm": 3029,
+            "clearFrom_mm": 2429,
+            "clearTo_mm": 3029
+          },
+          {
+            "index": 5,
+            "from_mm": 3029,
+            "to_mm": 3629,
+            "clearFrom_mm": 3029,
+            "clearTo_mm": 3629
+          },
+          {
+            "index": 6,
+            "from_mm": 3629,
+            "to_mm": 4229,
+            "clearFrom_mm": 3629,
+            "clearTo_mm": 4229
+          },
+          {
+            "index": 7,
+            "from_mm": 4229,
+            "to_mm": 4829,
+            "clearFrom_mm": 4229,
+            "clearTo_mm": 4829
+          },
+          {
+            "index": 8,
+            "from_mm": 4829,
+            "to_mm": 5429,
+            "clearFrom_mm": 4829,
+            "clearTo_mm": 5429
+          },
+          {
+            "index": 9,
+            "from_mm": 5429,
+            "to_mm": 6029,
+            "clearFrom_mm": 5429,
+            "clearTo_mm": 6029
+          }
+        ],
+        "fillers": [
+          {
+            "from_mm": -52,
+            "to_mm": 29
+          },
+          {
+            "from_mm": 6029,
+            "to_mm": 6110
+          }
+        ]
+      }
+    },
+    "bomRows": [
+      {
+        "pos": "S01",
+        "assembly": "frame",
+        "category": "steel",
+        "sku": "CONT-20HC-CUT",
+        "description": "Výřez stěny kontejneru 2100×2300",
+        "material": "Corten",
+        "qty": 1,
+        "unit": "ks",
+        "mass_kg": -86.94,
+        "cost": 2860.0000000000005,
+        "materialCost": 0,
+        "labourCost": 2860.0000000000005,
+        "price": 3861.000000000001,
+        "waste_pct": 0,
+        "labour_h": 4.4,
+        "transport": "fixed",
+        "componentIds": [
+          "opening-front"
+        ]
+      },
+      {
+        "pos": "S02",
+        "assembly": "frame",
+        "category": "steel",
+        "sku": "CONT-20HC-CUT",
+        "description": "Výřez stěny kontejneru 700×1900",
+        "material": "Corten",
+        "qty": 1,
+        "unit": "ks",
+        "mass_kg": -23.94,
+        "cost": 1690,
+        "materialCost": 0,
+        "labourCost": 1690,
+        "price": 2281.5,
+        "waste_pct": 0,
+        "labour_h": 2.6,
+        "transport": "fixed",
+        "componentIds": [
+          "opening-door-1"
+        ]
+      },
+      {
+        "pos": "S03",
+        "assembly": "frame",
+        "category": "steel",
+        "sku": "CONT-20HC-DOORS",
+        "description": "Demontáž dveří kontejneru",
+        "material": "Corten",
+        "qty": 1,
+        "unit": "ks",
+        "mass_kg": -280,
+        "cost": 1300,
+        "materialCost": 0,
+        "labourCost": 1300,
+        "price": 1755.0000000000002,
+        "waste_pct": 0,
+        "labour_h": 2,
+        "transport": "fixed",
+        "componentIds": [
+          "opening-front"
+        ]
+      },
+      {
+        "pos": "S04",
+        "assembly": "frame",
+        "category": "steel",
+        "sku": "PRF-L50x5",
+        "description": "L 50×5",
+        "material": "S235JRH",
+        "qty": 2,
+        "unit": "ks",
+        "mass_kg": 17.342,
+        "cost": 2049.0332,
+        "materialCost": 921.8032,
+        "labourCost": 1127.23,
+        "price": 2674.0145,
+        "waste_pct": 0.05,
+        "labour_h": 1.7342,
+        "transport": "fixed",
+        "profile": "L 50×50×5",
+        "len_mm": 2300,
+        "surface_m2": 0.8924,
+        "componentIds": [
+          "reinf-front"
+        ]
+      },
+      {
+        "pos": "S05",
+        "assembly": "frame",
+        "category": "steel",
+        "sku": "PRF-L50x5",
+        "description": "L 50×5",
+        "material": "S235JRH",
+        "qty": 1,
+        "unit": "ks",
+        "mass_kg": 7.917,
+        "cost": 935.4282000000001,
+        "materialCost": 420.82320000000004,
+        "labourCost": 514.605,
+        "price": 1220.74575,
+        "waste_pct": 0.05,
+        "labour_h": 0.7917000000000001,
+        "transport": "fixed",
+        "profile": "L 50×50×5",
+        "len_mm": 2100,
+        "surface_m2": 0.40740000000000004,
+        "componentIds": [
+          "reinf-front"
+        ]
+      },
+      {
+        "pos": "S06",
+        "assembly": "frame",
+        "category": "steel",
+        "sku": "PRF-L50x5",
+        "description": "L 50×5",
+        "material": "S235JRH",
+        "qty": 2,
+        "unit": "ks",
+        "mass_kg": 14.326,
+        "cost": 1692.6796000000002,
+        "materialCost": 761.4896000000001,
+        "labourCost": 931.19,
+        "price": 2208.9685,
+        "waste_pct": 0.05,
+        "labour_h": 1.4326,
+        "transport": "fixed",
+        "profile": "L 50×50×5",
+        "len_mm": 1900,
+        "surface_m2": 0.7372000000000001,
+        "componentIds": [
+          "reinf-door-1"
+        ]
+      },
+      {
+        "pos": "S07",
+        "assembly": "frame",
+        "category": "steel",
+        "sku": "PRF-L50x5",
+        "description": "L 50×5",
+        "material": "S235JRH",
+        "qty": 1,
+        "unit": "ks",
+        "mass_kg": 2.639,
+        "cost": 311.8094,
+        "materialCost": 140.2744,
+        "labourCost": 171.53499999999997,
+        "price": 406.91525,
+        "waste_pct": 0.05,
+        "labour_h": 0.26389999999999997,
+        "transport": "fixed",
+        "profile": "L 50×50×5",
+        "len_mm": 700,
+        "surface_m2": 0.1358,
+        "componentIds": [
+          "reinf-door-1"
+        ]
+      },
+      {
+        "pos": "S08",
+        "assembly": "foundation",
+        "category": "steel",
+        "sku": "PRF-U120",
+        "description": "U 120 (UPN)",
+        "material": "S235JRH",
+        "qty": 4,
+        "unit": "ks",
+        "mass_kg": 146.75680000000003,
+        "cost": 6737.232320000001,
+        "materialCost": 6737.232320000001,
+        "labourCost": 0,
+        "price": 8421.540400000002,
+        "waste_pct": 0.05,
+        "labour_h": 0,
+        "transport": "demounted",
+        "profile": "UPN 120",
+        "len_mm": 2738,
+        "surface_m2": 4.753168,
+        "componentIds": [
+          "foundation"
+        ]
+      },
+      {
+        "pos": "D01",
+        "assembly": "shell",
+        "category": "timber",
+        "sku": "CLAD-THERMO-26x92",
+        "description": "Thermowood borovice 26×92 rhombus",
+        "material": "thermowood borovice",
+        "qty": 45.750656000000006,
+        "unit": "m2",
+        "mass_kg": 457.50656,
+        "cost": 53198.86279680001,
+        "materialCost": 35356.10695680001,
+        "labourCost": 17842.75584,
+        "price": 70050.65942784,
+        "waste_pct": 0.12,
+        "labour_h": 27.4503936,
+        "transport": "fixed",
+        "componentIds": [
+          "wall-E",
+          "wall-N",
+          "wall-S",
+          "wall-W"
+        ]
+      },
+      {
+        "pos": "D02",
+        "assembly": "shell",
+        "category": "timber",
+        "sku": "MEM-DIFF",
+        "description": "Difuzní fólie",
+        "material": "PP fólie",
+        "qty": 61.414460000000005,
+        "unit": "m2",
+        "mass_kg": 9.212169,
+        "cost": 4360.42666,
+        "materialCost": 2364.4567100000004,
+        "labourCost": 1995.9699500000002,
+        "price": 5768.353155500001,
+        "waste_pct": 0.1,
+        "labour_h": 3.0707230000000005,
+        "transport": "fixed",
+        "componentIds": [
+          "roof",
+          "wall-E",
+          "wall-N",
+          "wall-S",
+          "wall-W"
+        ]
+      },
+      {
+        "pos": "D03",
+        "assembly": "shell",
+        "category": "timber",
+        "sku": "ROOF-TRAPEZ",
+        "description": "Střešní trapéz T35 0,6 mm",
+        "material": "ocelový plech Pz + lak",
+        "qty": 15.663804,
+        "unit": "m2",
+        "mass_kg": 90.85006320000001,
+        "cost": 10501.0142016,
+        "materialCost": 6428.4251616,
+        "labourCost": 4072.5890400000003,
+        "price": 13854.947914080001,
+        "waste_pct": 0.08,
+        "labour_h": 6.2655216000000005,
+        "transport": "fixed",
+        "componentIds": [
+          "roof"
+        ]
+      },
+      {
+        "pos": "D04",
+        "assembly": "shell",
+        "category": "timber",
+        "sku": "TIM-BATTEN-25x50",
+        "description": "Lať smrk 25×50",
+        "material": "smrk",
+        "qty": 76.25109333333334,
+        "unit": "m",
+        "mass_kg": 42.89124000000001,
+        "cost": 1509.7716480000001,
+        "materialCost": 1509.7716480000001,
+        "labourCost": 0,
+        "price": 1962.7031424000004,
+        "waste_pct": 0.1,
+        "labour_h": 0,
+        "transport": "fixed",
+        "profile": "25×50",
+        "componentIds": [
+          "wall-E",
+          "wall-N",
+          "wall-S",
+          "wall-W"
+        ]
+      },
+      {
+        "pos": "D05",
+        "assembly": "shell",
+        "category": "timber",
+        "sku": "TIM-BATTEN-50x50",
+        "description": "Lať smrk 50×50",
+        "material": "smrk",
+        "qty": 26.106340000000003,
+        "unit": "m",
+        "mass_kg": 29.369632500000005,
+        "cost": 918.9431680000001,
+        "materialCost": 918.9431680000001,
+        "labourCost": 0,
+        "price": 1194.6261184000002,
+        "waste_pct": 0.1,
+        "labour_h": 0,
+        "transport": "fixed",
+        "profile": "50×50",
+        "componentIds": [
+          "roof"
+        ]
+      },
+      {
+        "pos": "D06",
+        "assembly": "insulation",
+        "category": "timber",
+        "sku": "INS-MW-100",
+        "description": "Minerální vata 100 mm",
+        "material": "minerální vata",
+        "qty": 3.8019257500000005,
+        "unit": "m2",
+        "mass_kg": 13.306740125000001,
+        "cost": 845.9284793750002,
+        "materialCost": 598.8033056250001,
+        "labourCost": 247.12517375000004,
+        "price": 1112.0632818750003,
+        "waste_pct": 0.05,
+        "labour_h": 0.3801925750000001,
+        "transport": "fixed",
+        "componentIds": [
+          "partition-P1"
+        ]
+      },
+      {
+        "pos": "D07",
+        "assembly": "insulation",
+        "category": "timber",
+        "sku": "INS-MW-50",
+        "description": "Minerální vata 50 mm",
+        "material": "minerální vata",
+        "qty": 52.678620499999994,
+        "unit": "m2",
+        "mass_kg": 92.187585875,
+        "cost": 8125.677212125,
+        "materialCost": 4701.566879624999,
+        "labourCost": 3424.1103325000004,
+        "price": 10734.585892387502,
+        "waste_pct": 0.05,
+        "labour_h": 5.26786205,
+        "transport": "fixed",
+        "componentIds": [
+          "floor",
+          "roof",
+          "wall-E",
+          "wall-N",
+          "wall-S",
+          "wall-W"
+        ]
+      },
+      {
+        "pos": "D08",
+        "assembly": "interior",
+        "category": "timber",
+        "sku": "BENCH-BOARD-ABACHI-28",
+        "description": "Lavicové prkno abachi 28×90",
+        "material": "abachi",
+        "qty": 3.5951999999999997,
+        "unit": "m2",
+        "mass_kg": 34.51392,
+        "cost": 6327.552000000001,
+        "materialCost": 6327.552000000001,
+        "labourCost": 0,
+        "price": 8225.8176,
+        "waste_pct": 0.1,
+        "labour_h": 0,
+        "transport": "fixed",
+        "componentIds": [
+          "benches"
+        ]
+      },
+      {
+        "pos": "D09",
+        "assembly": "interior",
+        "category": "timber",
+        "sku": "FLOOR-THERMO-28",
+        "description": "Podlaha thermowood 28 mm",
+        "material": "thermowood borovice",
+        "qty": 12.23663,
+        "unit": "m2",
+        "mass_kg": 144.392234,
+        "cost": 17302.594820000002,
+        "materialCost": 13325.690070000002,
+        "labourCost": 3976.90475,
+        "price": 22692.218503500004,
+        "waste_pct": 0.1,
+        "labour_h": 6.118315,
+        "transport": "fixed",
+        "componentIds": [
+          "floor"
+        ]
+      },
+      {
+        "pos": "D10",
+        "assembly": "interior",
+        "category": "timber",
+        "sku": "INT-ASPEN-15",
+        "description": "Osika SHP 15×90",
+        "material": "osika",
+        "qty": 53.451336000000005,
+        "unit": "m2",
+        "mass_kg": 363.4690848,
+        "cost": 62538.06311999999,
+        "materialCost": 38217.70524000001,
+        "labourCost": 24320.357880000003,
+        "price": 82515.49995,
+        "waste_pct": 0.1,
+        "labour_h": 37.41593519999999,
+        "transport": "fixed",
+        "componentIds": [
+          "partition-P1",
+          "roof",
+          "wall-E",
+          "wall-N",
+          "wall-S",
+          "wall-W"
+        ]
+      },
+      {
+        "pos": "D11",
+        "assembly": "interior",
+        "category": "timber",
+        "sku": "SHEATH-OSB-22",
+        "description": "OSB/3 22 mm",
+        "material": "OSB/3",
+        "qty": 12.23663,
+        "unit": "m2",
+        "mass_kg": 166.41816799999998,
+        "cost": 7538.987743000001,
+        "materialCost": 5550.535368000001,
+        "labourCost": 1988.452375,
+        "price": 9900.106684650002,
+        "waste_pct": 0.08,
+        "labour_h": 3.0591575,
+        "transport": "fixed",
+        "componentIds": [
+          "floor"
+        ]
+      },
+      {
+        "pos": "D12",
+        "assembly": "interior",
+        "category": "timber",
+        "sku": "TIM-BATTEN-25x50",
+        "description": "Lať smrk 25×50",
+        "material": "smrk",
+        "qty": 82.23524333333334,
+        "unit": "m",
+        "mass_kg": 46.25732437500002,
+        "cost": 1628.257818,
+        "materialCost": 1628.257818,
+        "labourCost": 0,
+        "price": 2116.7351634,
+        "waste_pct": 0.1,
+        "labour_h": 0,
+        "transport": "fixed",
+        "profile": "25×50",
+        "componentIds": [
+          "partition-P1",
+          "roof",
+          "wall-E",
+          "wall-N",
+          "wall-S",
+          "wall-W"
+        ]
+      },
+      {
+        "pos": "D13",
+        "assembly": "interior",
+        "category": "timber",
+        "sku": "TIM-BATTEN-50x50",
+        "description": "Lať smrk 50×50",
+        "material": "smrk",
+        "qty": 95.77931000000001,
+        "unit": "m",
+        "mass_kg": 107.75172375000002,
+        "cost": 3371.4317120000005,
+        "materialCost": 3371.4317120000005,
+        "labourCost": 0,
+        "price": 4382.861225600001,
+        "waste_pct": 0.1,
+        "labour_h": 0,
+        "transport": "fixed",
+        "profile": "50×50",
+        "componentIds": [
+          "floor",
+          "roof",
+          "wall-E",
+          "wall-N",
+          "wall-S",
+          "wall-W"
+        ]
+      },
+      {
+        "pos": "D14",
+        "assembly": "interior",
+        "category": "timber",
+        "sku": "TIM-KVH-45x95",
+        "description": "KVH 45×95",
+        "material": "smrk KVH",
+        "qty": 6.850316666666667,
+        "unit": "m",
+        "mass_kg": 13.178296687500001,
+        "cost": 429.10383600000006,
+        "materialCost": 429.10383600000006,
+        "labourCost": 0,
+        "price": 557.8349868000001,
+        "waste_pct": 0.08,
+        "labour_h": 0,
+        "transport": "fixed",
+        "profile": "95×45",
+        "componentIds": [
+          "partition-P1"
+        ]
+      },
+      {
+        "pos": "D15",
+        "assembly": "interior",
+        "category": "timber",
+        "sku": "TIM-SUPPORT-45x70",
+        "description": "Podpěra lavice osika 45×70",
+        "material": "osika",
+        "qty": 11.6,
+        "unit": "m",
+        "mass_kg": 16.442999999999998,
+        "cost": 7889.000000000001,
+        "materialCost": 1212.2,
+        "labourCost": 6676.8,
+        "price": 10589.54,
+        "waste_pct": 0.1,
+        "labour_h": 10.272,
+        "transport": "fixed",
+        "profile": "70×45",
+        "componentIds": [
+          "bench-supports-main-L0",
+          "bench-supports-main-L1",
+          "benches"
+        ]
+      },
+      {
+        "pos": "D16",
+        "assembly": "interior",
+        "category": "timber",
+        "sku": "VB-ALU",
+        "description": "Parozábrana Al (saunová)",
+        "material": "Al fólie",
+        "qty": 49.341146,
+        "unit": "m2",
+        "mass_kg": 9.868229199999998,
+        "cost": 5550.878925,
+        "materialCost": 2985.139333,
+        "labourCost": 2565.739592,
+        "price": 7344.4295821000005,
+        "waste_pct": 0.1,
+        "labour_h": 3.9472916799999997,
+        "transport": "fixed",
+        "componentIds": [
+          "partition-P1",
+          "roof",
+          "wall-E",
+          "wall-N",
+          "wall-S",
+          "wall-W"
+        ]
+      },
+      {
+        "pos": "N01",
+        "assembly": "frame",
+        "category": "purchased",
+        "sku": "CONT-20HC",
+        "description": "ISO kontejner 20′ HC (použitý, cargo-worthy)",
+        "material": "Corten",
+        "qty": 1,
+        "unit": "ks",
+        "mass_kg": 2250,
+        "cost": 95000,
+        "materialCost": 95000,
+        "labourCost": 0,
+        "price": 114000,
+        "waste_pct": 0,
+        "labour_h": 0,
+        "transport": "fixed",
+        "componentIds": [
+          "frame"
+        ]
+      },
+      {
+        "pos": "N02",
+        "assembly": "shell",
+        "category": "purchased",
+        "sku": "VENT-GRILLE-100",
+        "description": "Větrací mřížka – odvod",
+        "material": "",
+        "qty": 1,
+        "unit": "ks",
+        "mass_kg": 0.3,
+        "cost": 545,
+        "materialCost": 350,
+        "labourCost": 195,
+        "price": 683.25,
+        "waste_pct": 0,
+        "labour_h": 0.3,
+        "transport": "fixed",
+        "componentIds": [
+          "ventilation"
+        ]
+      },
+      {
+        "pos": "N03",
+        "assembly": "shell",
+        "category": "purchased",
+        "sku": "VENT-GRILLE-100",
+        "description": "Větrací mřížka – přívod",
+        "material": "",
+        "qty": 1,
+        "unit": "ks",
+        "mass_kg": 0.3,
+        "cost": 545,
+        "materialCost": 350,
+        "labourCost": 195,
+        "price": 683.25,
+        "waste_pct": 0,
+        "labour_h": 0.3,
+        "transport": "fixed",
+        "componentIds": [
+          "ventilation"
+        ]
+      },
+      {
+        "pos": "N04",
+        "assembly": "glazing",
+        "category": "purchased",
+        "sku": "DOOR-GLASS-700x1900",
+        "description": "Celoskleněné dveře 700×1 900",
+        "material": "",
+        "qty": 2,
+        "unit": "ks",
+        "mass_kg": 90,
+        "cost": 31600,
+        "materialCost": 29000,
+        "labourCost": 2600,
+        "price": 38310,
+        "waste_pct": 0,
+        "labour_h": 4,
+        "transport": "fixed",
+        "componentIds": [
+          "opening-door-1",
+          "opening-door-sauna"
+        ]
+      },
+      {
+        "pos": "N05",
+        "assembly": "glazing",
+        "category": "purchased",
+        "sku": "GLASS-FRONT-ISO",
+        "description": "Prosklené čelo ISO",
+        "material": "",
+        "qty": 1,
+        "unit": "ks",
+        "mass_kg": 220,
+        "cost": 90200,
+        "materialCost": 85000,
+        "labourCost": 5200,
+        "price": 109020,
+        "waste_pct": 0,
+        "labour_h": 8,
+        "transport": "fixed",
+        "componentIds": [
+          "opening-front"
+        ]
+      },
+      {
+        "pos": "N06",
+        "assembly": "heater",
+        "category": "purchased",
+        "sku": "HEATER-EL-B",
+        "description": "Elektrická kamna 18 kW (placeholder) vč. kamenů 45 kg",
+        "material": "",
+        "qty": 1,
+        "unit": "ks",
+        "mass_kg": 80,
+        "cost": 35625,
+        "materialCost": 34000,
+        "labourCost": 1625,
+        "price": 42993.75,
+        "waste_pct": 0,
+        "labour_h": 2.5,
+        "transport": "fixed",
+        "componentIds": [
+          "heater"
+        ]
+      },
+      {
+        "pos": "N07",
+        "assembly": "electrical",
+        "category": "purchased",
+        "sku": "LED-STRIP-SAUNA",
+        "description": "LED pásek saunový 2 m",
+        "material": "",
+        "qty": 1,
+        "unit": "ks",
+        "mass_kg": 0.5,
+        "cost": 2450,
+        "materialCost": 1800,
+        "labourCost": 650,
+        "price": 3037.5,
+        "waste_pct": 0,
+        "labour_h": 1,
+        "transport": "fixed",
+        "componentIds": [
+          "lighting"
+        ]
+      },
+      {
+        "pos": "N08",
+        "assembly": "foundation",
+        "category": "purchased",
+        "sku": "PAD-CONCRETE",
+        "description": "Betonová patka 400×400",
+        "material": "",
+        "qty": 8,
+        "unit": "ks",
+        "mass_kg": 360,
+        "cost": 6200,
+        "materialCost": 3600,
+        "labourCost": 2600,
+        "price": 7830,
+        "waste_pct": 0,
+        "labour_h": 4,
+        "transport": "demounted",
+        "componentIds": [
+          "foundation"
+        ]
+      }
+    ],
+    "penetrations": [
+      {
+        "id": "vent-supply",
+        "componentId": "ventilation",
+        "kind": "vent_supply",
+        "surface": "S",
+        "position_mm": [
+          3200,
+          134,
+          558
+        ],
+        "size": {
+          "diameter_mm": 100
+        }
+      },
+      {
+        "id": "vent-exhaust",
+        "componentId": "ventilation",
+        "kind": "vent_exhaust",
+        "surface": "N",
+        "position_mm": [
+          5624,
+          2304,
+          2465
+        ],
+        "size": {
+          "diameter_mm": 100
+        }
+      }
+    ],
+    "mass": {
+      "byAssembly": {
+        "frame": {
+          "mass_kg": 1901.3439999999998,
+          "cog_mm": [
+            2491.974292132302,
+            1223.392978072353,
+            1103.778617651514
+          ]
+        },
+        "shell": {
+          "mass_kg": 630.4296647,
+          "cog_mm": [
+            2812.0323893029517,
+            1248.3632497390633,
+            1788.936845659668
+          ]
+        },
+        "interior": {
+          "mass_kg": 902.2919808125001,
+          "cog_mm": [
+            2894.831349405475,
+            1274.703048687456,
+            1197.701951837792
+          ]
+        },
+        "insulation": {
+          "mass_kg": 105.494326,
+          "cog_mm": [
+            2720.94422238524,
+            1254.5229432750095,
+            1535.9527610917037
+          ]
+        },
+        "glazing": {
+          "mass_kg": 310,
+          "cog_mm": [
+            4723.6612903225805,
+            1001.6209677419355,
+            1349.9354838709678
+          ]
+        },
+        "heater": {
+          "mass_kg": 80,
+          "cog_mm": [
+            3200,
+            384,
+            633
+          ]
+        },
+        "electrical": {
+          "mass_kg": 0.5,
+          "cog_mm": [
+            4212,
+            2004,
+            1300
+          ]
+        }
+      },
+      "empty_kg": 3930.0599715124995,
+      "empty_cog_mm": [
+        2832.6176635230267,
+        1205.53377019682,
+        1256.7092897882317
+      ],
+      "transport_kg": 3930.0599715124995,
+      "transport_cog_mm": [
+        2832.6176635230267,
+        1205.53377019682,
+        1256.7092897882317
+      ],
+      "foundation_kg": 506.7568,
+      "demounted": []
+    },
+    "lift": {
+      "method": "rigid_equal_stiffness",
+      "load_kN": 38.55388832053762,
+      "points": [
+        {
+          "id": "A",
+          "position_mm": [
+            75,
+            75,
+            2896
+          ],
+          "R_kN": 10.39269525172149
+        },
+        {
+          "id": "B",
+          "position_mm": [
+            5983,
+            75,
+            2896
+          ],
+          "R_kN": 9.11116128613932
+        },
+        {
+          "id": "C",
+          "position_mm": [
+            5983,
+            2363,
+            2896
+          ],
+          "R_kN": 8.884248908547319
+        },
+        {
+          "id": "D",
+          "position_mm": [
+            75,
+            2363,
+            2896
+          ],
+          "R_kN": 10.165782874129489
+        }
+      ],
+      "spread": 0.15650264177070028,
+      "warn": false
+    },
+    "supports": {
+      "foundation": "beams",
+      "method": "rigid_equal_stiffness",
+      "load_kN": 38.55388832053762,
+      "cog_mm": [
+        2832.6176635230267,
+        1205.53377019682,
+        1256.7092897882317
+      ],
+      "points": [
+        {
+          "id": "P1",
+          "position_mm": [
+            75,
+            75,
+            0
+          ],
+          "R_kN": 5.452654418977179
+        },
+        {
+          "id": "P2",
+          "position_mm": [
+            75,
+            2363,
+            0
+          ],
+          "R_kN": 5.339198230181179
+        },
+        {
+          "id": "P3",
+          "position_mm": [
+            2044.3333333333333,
+            75,
+            0
+          ],
+          "R_kN": 5.068194229302528
+        },
+        {
+          "id": "P4",
+          "position_mm": [
+            2044.3333333333333,
+            2363,
+            0
+          ],
+          "R_kN": 4.954738040506528
+        },
+        {
+          "id": "P5",
+          "position_mm": [
+            4013.6666666666665,
+            75,
+            0
+          ],
+          "R_kN": 4.683734039627876
+        },
+        {
+          "id": "P6",
+          "position_mm": [
+            4013.6666666666665,
+            2363,
+            0
+          ],
+          "R_kN": 4.570277850831876
+        },
+        {
+          "id": "P7",
+          "position_mm": [
+            5983,
+            75,
+            0
+          ],
+          "R_kN": 4.2992738499532255
+        },
+        {
+          "id": "P8",
+          "position_mm": [
+            5983,
+            2363,
+            0
+          ],
+          "R_kN": 4.185817661157225
+        }
+      ]
+    },
+    "transport": {
+      "width_mm": 2542,
+      "length_mm": 6162,
+      "height_mm": 2982,
+      "vehicleId": "truck_hiab",
+      "deckHeight_mm": 1250,
+      "heightOnVehicle_mm": 4232,
+      "needsMobileCrane": false,
+      "oversize": true,
+      "oversizeReasons": [
+        "height"
+      ],
+      "mass_kg": 3930.0599715124995,
+      "demountedParts": []
+    },
+    "sauna": {
+      "innerVolume_m3": 22.025,
+      "glassArea_m2": 5.4,
+      "uninsulatedArea_m2": 0,
+      "eqVolume_m3": 28.505,
+      "suitableHeaters": [
+        "HEATER-EL-B"
+      ],
+      "cabinClearHeight_mm": 2507,
+      "topBench_mm": 1100,
+      "topBenchToCeiling_mm": 1407,
+      "electrical": {
+        "power_kw": 18,
+        "voltage": 400,
+        "breaker_A": 32,
+        "cable": "CYKY-J 5×6"
+      }
+    },
+    "price": {
+      "cost": {
+        "steel": 8981.622720000001,
+        "timber": 124925.68920665001,
+        "purchased": 249100,
+        "labour": 88770.36493324999,
+        "transport": 23750,
+        "crane": 0,
+        "total": 495527.6768599
+      },
+      "price": {
+        "steel": 11227.028400000001,
+        "timber": 162403.39596864503,
+        "purchased": 298920,
+        "labour": 119839.9926598875,
+        "transport": 26125.000000000004,
+        "crane": 0,
+        "total": 618515.4170285326
+      },
+      "total": 618515.4170285326,
+      "display": {
+        "mode": "range",
+        "from": 557000,
+        "to": 680000
+      }
+    },
+    "facts": {
+      "module.type": "iso_20hc",
+      "module.L_mm": 6058,
+      "module.W_mm": 2438,
+      "module.H_mm": 2896,
+      "module.grid_mm": 600,
+      "openings.count": 3,
+      "zone.changing.length_mm": 1800,
+      "zone.sauna.length_mm": 4258,
+      "heater.fuel": "electric",
+      "heater.power_kw": 18,
+      "heater.volume_min_m3": 15,
+      "heater.volume_max_m3": 30,
+      "heater.minCabinHeight_mm": 2100,
+      "sauna.innerVolume_m3": 22.025,
+      "sauna.glassArea_m2": 5.4,
+      "sauna.uninsulatedArea_m2": 0,
+      "sauna.eqVolume_m3": 28.505,
+      "sauna.clearHeight_mm": 2507,
+      "sauna.length_mm": 4048.5,
+      "sauna.topBench_mm": 1100,
+      "sauna.topBenchToCeiling_mm": 1407,
+      "mass.empty_kg": 3930.06,
+      "mass.transport_kg": 3930.06,
+      "lift.spread": 0.1565,
+      "transport.width_mm": 2542,
+      "transport.heightOnVehicle_mm": 4232,
+      "transport.oversize": true
+    },
+    "violations": [
+      {
+        "ruleId": "R03b",
+        "level": "warning",
+        "message": {
+          "cs": "Horní lavice – strop {sauna.topBenchToCeiling_mm} mm, doporučeno {limit.topBenchToCeiling_mm.min}–{limit.topBenchToCeiling_mm.max} mm.",
+          "de": "Oberbank – Decke {sauna.topBenchToCeiling_mm} mm, empfohlen {limit.topBenchToCeiling_mm.min}–{limit.topBenchToCeiling_mm.max} mm.",
+          "en": "Top bench to ceiling {sauna.topBenchToCeiling_mm} mm, recommended {limit.topBenchToCeiling_mm.min}–{limit.topBenchToCeiling_mm.max} mm."
+        },
+        "params": {
+          "sauna.topBenchToCeiling_mm": 1407,
+          "limit.topBenchToCeiling_mm.min": 1100,
+          "limit.topBenchToCeiling_mm.max": 1200
+        },
+        "affectedIds": []
+      },
+      {
+        "ruleId": "T01",
+        "level": "warning",
+        "message": {
+          "cs": "Nadrozměrná přeprava (šířka {width_mm} mm, výška na vozidle {height_mm} mm).",
+          "de": "Übermaßtransport (Breite {width_mm} mm, Höhe auf Fahrzeug {height_mm} mm).",
+          "en": "Oversize transport (width {width_mm} mm, height on vehicle {height_mm} mm)."
+        },
+        "params": {
+          "width_mm": 2542,
+          "height_mm": 4232
+        },
+        "affectedIds": []
+      }
+    ],
+    "submittable": true
+  }
+}

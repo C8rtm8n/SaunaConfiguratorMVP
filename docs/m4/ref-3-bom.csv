@@ -1,0 +1,33 @@
+﻿pozice;kategorie;sestava;sku;popis;material;profil;delka_mm;mnozstvi;mj;kg_m;kg_celkem;povrch_m2;prorez_pct;preprava
+S01;steel;frame;CONT-20HC-CUT;Výřez stěny kontejneru 2100×2300;Corten;;;1;ks;;-86,94;;0;fixed
+S02;steel;frame;CONT-20HC-CUT;Výřez stěny kontejneru 700×1900;Corten;;;1;ks;;-23,94;;0;fixed
+S03;steel;frame;CONT-20HC-DOORS;Demontáž dveří kontejneru;Corten;;;1;ks;;-280;;0;fixed
+S04;steel;frame;PRF-L50x5;L 50×5;S235JRH;L 50×50×5;2300;2;ks;3,77;17,342;0,892;5;fixed
+S05;steel;frame;PRF-L50x5;L 50×5;S235JRH;L 50×50×5;2100;1;ks;3,77;7,917;0,407;5;fixed
+S06;steel;frame;PRF-L50x5;L 50×5;S235JRH;L 50×50×5;1900;2;ks;3,77;14,326;0,737;5;fixed
+S07;steel;frame;PRF-L50x5;L 50×5;S235JRH;L 50×50×5;700;1;ks;3,77;2,639;0,136;5;fixed
+S08;steel;foundation;PRF-U120;U 120 (UPN);S235JRH;UPN 120;2738;4;ks;13,4;146,757;4,753;5;demounted
+D01;timber;shell;CLAD-THERMO-26x92;Thermowood borovice 26×92 rhombus;thermowood borovice;;;45,751;m2;;457,507;;12;fixed
+D02;timber;shell;MEM-DIFF;Difuzní fólie;PP fólie;;;61,414;m2;;9,212;;10;fixed
+D03;timber;shell;ROOF-TRAPEZ;Střešní trapéz T35 0,6 mm;ocelový plech Pz + lak;;;15,664;m2;;90,85;;8;fixed
+D04;timber;shell;TIM-BATTEN-25x50;Lať smrk 25×50;smrk;25×50;;76,251;m;;42,891;;10;fixed
+D05;timber;shell;TIM-BATTEN-50x50;Lať smrk 50×50;smrk;50×50;;26,106;m;;29,37;;10;fixed
+D06;timber;insulation;INS-MW-100;Minerální vata 100 mm;minerální vata;;;3,802;m2;;13,307;;5;fixed
+D07;timber;insulation;INS-MW-50;Minerální vata 50 mm;minerální vata;;;52,679;m2;;92,188;;5;fixed
+D08;timber;interior;BENCH-BOARD-ABACHI-28;Lavicové prkno abachi 28×90;abachi;;;3,595;m2;;34,514;;10;fixed
+D09;timber;interior;FLOOR-THERMO-28;Podlaha thermowood 28 mm;thermowood borovice;;;12,237;m2;;144,392;;10;fixed
+D10;timber;interior;INT-ASPEN-15;Osika SHP 15×90;osika;;;53,451;m2;;363,469;;10;fixed
+D11;timber;interior;SHEATH-OSB-22;OSB/3 22 mm;OSB/3;;;12,237;m2;;166,418;;8;fixed
+D12;timber;interior;TIM-BATTEN-25x50;Lať smrk 25×50;smrk;25×50;;82,235;m;;46,257;;10;fixed
+D13;timber;interior;TIM-BATTEN-50x50;Lať smrk 50×50;smrk;50×50;;95,779;m;;107,752;;10;fixed
+D14;timber;interior;TIM-KVH-45x95;KVH 45×95;smrk KVH;95×45;;6,85;m;;13,178;;8;fixed
+D15;timber;interior;TIM-SUPPORT-45x70;Podpěra lavice osika 45×70;osika;70×45;;11,6;m;;16,443;;10;fixed
+D16;timber;interior;VB-ALU;Parozábrana Al (saunová);Al fólie;;;49,341;m2;;9,868;;10;fixed
+N01;purchased;frame;CONT-20HC;ISO kontejner 20′ HC (použitý, cargo-worthy);Corten;;;1;ks;;2250;;0;fixed
+N02;purchased;shell;VENT-GRILLE-100;Větrací mřížka – odvod;;;;1;ks;;0,3;;0;fixed
+N03;purchased;shell;VENT-GRILLE-100;Větrací mřížka – přívod;;;;1;ks;;0,3;;0;fixed
+N04;purchased;glazing;DOOR-GLASS-700x1900;Celoskleněné dveře 700×1 900;;;;2;ks;;90;;0;fixed
+N05;purchased;glazing;GLASS-FRONT-ISO;Prosklené čelo ISO;;;;1;ks;;220;;0;fixed
+N06;purchased;heater;HEATER-EL-B;Elektrická kamna 18 kW (placeholder) vč. kamenů 45 kg;;;;1;ks;;80;;0;fixed
+N07;purchased;electrical;LED-STRIP-SAUNA;LED pásek saunový 2 m;;;;1;ks;;0,5;;0;fixed
+N08;purchased;foundation;PAD-CONCRETE;Betonová patka 400×400;;;;8;ks;;360;;0;demounted

@@ -8,7 +8,7 @@
     {
       "name": "iframe origin = CDN, host origin differs",
       "ok": true,
-      "detail": "http://127.0.0.1:40127/configurator/"
+      "detail": "http://127.0.0.1:34567/configurator/"
     },
     {
       "name": "live price updates and host receives price_change",
@@ -63,12 +63,12 @@
     {
       "name": "lead_submitted reaches the host (GA4/GTM dataLayer)",
       "ok": true,
-      "detail": "{\"event\":\"sauna_lead_submitted\",\"sauna_tenant\":\"demo\",\"leadId\":\"l2g252l5s3121\",\"configId\":\"c6m36252p6u2i\",\"currency\":\"CZK\",\"value\":452381}"
+      "detail": "{\"event\":\"sauna_lead_submitted\",\"sauna_tenant\":\"demo\",\"leadId\":\"l4u6l2j3u2s2e\",\"configId\":\"c4k6r506m0d6h\",\"currency\":\"CZK\",\"value\":452381}"
     },
     {
       "name": "share link = host page + ?c=<id>",
       "ok": true,
-      "detail": "http://localhost:39701/sauny?c=c5k0r6v4t0h1d"
+      "detail": "http://localhost:38167/sauny?c=c674t5i2v4j0o"
     },
     {
       "name": "shared link restores the saved configuration",
@@ -88,7 +88,7 @@
     {
       "name": "mobile 4G: wizard + price interactive < 3 s",
       "ok": true,
-      "detail": "wizard 758 ms, 3D 1947 ms"
+      "detail": "wizard 768 ms, 3D 2261 ms"
     },
     {
       "name": "embed.js < 5 kB",
@@ -101,7 +101,7 @@
     "gzip": 1507
   },
   "mobileTti": {
-    "wizard_ms": 758,
-    "viewer_ms": 1947
+    "wizard_ms": 768,
+    "viewer_ms": 2261
   }
 }
